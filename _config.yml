@@ -1,0 +1,8 @@
+title: "My Awesome Site"
+description: "A description of my awesome website!"
+url: "https://pastelsss.github.io"
+baseurl: ""  # Leave empty if your site is hosted at the root level
+
+remote_theme: riggraz/dev.no-style-please  # This is the theme you want to use
+
+theme: no-style-please
