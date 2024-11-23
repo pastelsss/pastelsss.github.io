@@ -1,0 +1,31 @@
+
+# _config.yml
+
+
+
+# Basic site information
+title: "pastelsss"
+description: "description"
+baseurl: ""
+url: "https://pastelsss.github.io"
+
+#setting my theme
+theme: no-style-please-master
+
+
+name: "Kyle"
+email: "kylecamargo22@gmail.com"
+
+social:
+   instagram: "uchoakyle"
+
+
+
+#setting the default layout
+defaults:
+    - scope:
+        path: ""
+        type: "posts"
+        type: "posts"
+       values:
+        layout: "post"
