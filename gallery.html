@@ -6,17 +6,20 @@
     <title>Gallery</title>
     <style>
         body {
-            font-family: Source Code Pro;
+            font-family: Source Code Pro, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            text-align: center;
+            display: flex;
+            min-height: 100vh;  /* Ensure the body takes up full height */
         }
 
         header {
             background-color: #333;
             color: white;
             padding: 10px 0;
+            text-align: center;
+            width: 100%;
         }
 
         h1 {
@@ -29,11 +32,40 @@
             align-items: center;
             padding: 20px;
             flex-direction: column;
+            flex-grow: 1;
+            margin-left: 220px;  /* Space to the left to account for the sidebar */
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            padding-top: 20px;
+            text-align: center;
+            box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
         }
 
         /* Add a container for each image and text */
         .photo-container {
-            margin-bottom: 40px;  /* Space between images */
+            margin-bottom: 40px;
         }
 
         .gallery img {
@@ -53,35 +85,14 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Gallery</h1>
-    </header>
 
-    <div class="gallery">
-        <!-- First photo and description -->
-        <div class="photo-container">
-            <img src="photos/water3.jpg" alt="water3">
-            <div class="description">
-                <p>waters3.</p>
-            </div>
-        </div>
+    <!-- Sidebar with links -->
+    <div class="sidebar">
+        <h2>Links</h2>
+        <a href="composites.html">Composites</a>
+        <a href="about.html">About</a>
+        <a href="music.html">Music</a>
+        <a href="gallery.html">Gallery</a>
+   
 
-        
-        <div class="photo-container">
-            <img src="photos/IMG_4834.jpg" alt="shower">
-            <div class="description">
-                <p>shower.</p>
-            </div>
-        </div>
-
-       
-        <div class="photo-container">
-            <img src="photos/i.jpg" alt="i">
-            <div class="description">
-                <p>i.</p>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
 
