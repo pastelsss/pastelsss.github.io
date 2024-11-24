@@ -12,7 +12,7 @@
             background-color: #f4f4f4;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;  /* Align items from the top */
             flex-direction: column;
             min-height: 100vh;
         }
@@ -32,6 +32,8 @@
         .composites {
             padding: 20px;
             text-align: center;
+            flex-grow: 1;
+            margin-top: 50px; /* Add some space at the top */
         }
 
         .composites img {
@@ -84,4 +86,16 @@
 
     <!-- Main content section -->
     <div class="composites">
+        <h2>Composites</h2>
+
+        <!-- Image Display Section -->
+        <img src="photos/water3.jpg" alt="Water Image" />
+
+        <!-- Description or other content here -->
+        <p>This is the image from the "composites" section.</p>
+    </div>
+
+</body>
+</html>
+
        
