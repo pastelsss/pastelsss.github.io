@@ -10,6 +10,12 @@
             margin: 0;
             padding: 0;
             background-color: #FFFFFF;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
         }
 
         header {
@@ -29,12 +35,35 @@
             text-align: center;
         }
 
+        /* Randomize the positioning of the elements */
+        .randomize {
+            position: relative;
+            font-size: 18px;
+            margin-bottom: 20px;  /* Space between elements */
+            left: calc(50% - 50px);  /* Default starting position, centered */
+            transform: translateX(-50%);  /* Center it horizontally */
+        }
+
+        /* Random adjustments for different elements */
+        .randomize:nth-child(odd) {
+            left: calc(50% - 150px);  /* Moves left */
+        }
+
+        .randomize:nth-child(even) {
+            left: calc(50% + 150px);  /* Moves right */
+        }
+
+        .randomize:nth-child(3) {
+            left: calc(50% + 50px);  /* Moves a little to the right */
+        }
+
+        .randomize:nth-child(4) {
+            left: calc(50% - 100px);  /* Moves a little to the left */
+        }
+
         a {
             text-decoration: none;
             color: #007BFF;
-            font-size: 18px;
-            display: block;  /* Ensure each link is displayed on a separate line */
-            margin-bottom: 10px;  /* Space between links */
         }
 
         a:hover {
@@ -50,12 +79,12 @@
     </header> -->
 
     <main>
-        <p>pastels.</p>
-        <p>gallery//below:</p>
-        <a href="gallery.html">Gallery</a>
-        <p>music below:</p>
-        <a href="music.html">Music</a>
-        <a href="about.html">About</a>
+        <p class="randomize">pastels.</p>
+        <p class="randomize">gallery//below:</p>
+        <a href="gallery.html" class="randomize">Gallery</a>
+        <p class="randomize">music below:</p>
+        <a href="music.html" class="randomize">Music</a>
+        <a href="about.html" class="randomize">About</a>
     </main>
 
 </body>
