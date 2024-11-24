@@ -6,7 +6,7 @@
     <title></title>
     <style>
         body {
-            font-family: Source Code Pro;
+            font-family: Source Code Pro, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #FFFFFF;
@@ -33,32 +33,29 @@
         main {
             padding: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Randomize the positioning of the elements */
+        /* Add a class for the "pastelsss" text */
+        .pastelsss {
+            font-size: 8rem;  /* Adjust the size of the text */
+            font-weight: 100; /* Thin font weight */
+            color: lightblue; /* Light blue color */
+            letter-spacing: 5px; /* Space the letters out */
+            writing-mode: vertical-lr; /* Display the text vertically */
+            text-shadow: 0 0 5px #ADD8E6, 0 0 10px #ADD8E6, 0 0 15px #ADD8E6; /* Light blue outline */
+            margin: 0;
+        }
+
+        /* Randomize the positioning of other elements */
         .randomize {
             position: relative;
             font-size: 18px;
-            margin-bottom: 20px;  /* Space between elements */
-            left: calc(50% - 50px);  /* Default starting position, centered */
-            transform: translateX(-50%);  /* Center it horizontally */
-        }
-
-        /* Random adjustments for different elements */
-        .randomize:nth-child(odd) {
-            left: calc(50% - 150px);  /* Moves left */
-        }
-
-        .randomize:nth-child(even) {
-            left: calc(50% + 150px);  /* Moves right */
-        }
-
-        .randomize:nth-child(3) {
-            left: calc(50% + 50px);  /* Moves a little to the right */
-        }
-
-        .randomize:nth-child(4) {
-            left: calc(50% - 100px);  /* Moves a little to the left */
+            margin-bottom: 20px;
+            left: calc(50% - 50px);
+            transform: translateX(-50%);
         }
 
         a {
@@ -73,12 +70,15 @@
 </head>
 <body>
 
-    <!-- Optional header if you want to keep it -->
-    <!-- <header>
+    <header>
         <h1>pastelsss</h1>
-    </header> -->
+    </header>
 
     <main>
+        <!-- "pastelsss" text vertically displayed -->
+        <div class="pastelsss">pastelsss</div>
+
+        <!-- Other elements -->
         <p class="randomize">pastels.</p>
         <p class="randomize">gallery//below:</p>
         <a href="gallery.html" class="randomize">Gallery</a>
