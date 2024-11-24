@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Index</title>
     <style>
         body {
             font-family: Source Code Pro, sans-serif;
@@ -15,7 +15,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            overflow: hidden;
+            overflow: visible; /* Allow overflow to ensure visibility */
         }
 
         header {
@@ -23,6 +23,7 @@
             color: black;
             padding: 10px 0;
             text-align: center;
+            width: 100%;
         }
 
         h1 {
@@ -36,6 +37,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative; /* Allow absolute positioning to be relative to this container */
+            width: 100%; /* Ensure it takes up the full width */
+            height: 100%; /* Ensure it takes up the full height */
         }
 
         /* Add a class for the "pastelsss" text */
@@ -90,4 +94,21 @@
     <header>
         <h1>pastelsss</h1>
     </header>
+
+    <main>
+        <!-- "pastelsss" text vertically displayed -->
+        <div class="pastelsss">pastelsss</div>
+
+        <!-- Other elements with slight randomization -->
+        <p class="randomize">pastels.</p>
+        <p class="randomize">gallery//below:</p>
+        <a href="gallery.html" class="randomize">Gallery</a>
+        <p class="randomize">music below:</p>
+        <a href="music.html" class="randomize">Music</a>
+        <a href="about.html" class="randomize about">About</a>
+    </main>
+
+</body>
+</html>
+
 
