@@ -3,79 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
+    <title>About</title>
     <style>
         body {
-            font-family: Source Code Pro, sans-serif;
+            font-family: Source Code Pro;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            display: flex;
-            min-height: 100vh;  /* Ensure the body takes up full height */
+            text-align: center;
         }
 
         header {
             background-color: #333;
             color: white;
             padding: 10px 0;
-            text-align: center;
-            width: 100%;
         }
 
         h1 {
             margin: 0;
         }
 
-        .gallery {
+        .about {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             flex-direction: column;
-            flex-grow: 1;
-            margin-left: 220px;  /* Space to the left to account for the sidebar */
         }
 
-        /* Sidebar styles */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 200px;
-            height: 100%;
-            background-color: #333;
-            color: white;
-            padding-top: 20px;
-            text-align: center;
-            box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .sidebar h2 {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .sidebar a {
-            display: block;
-            padding: 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .sidebar a:hover {
-            background-color: #444;
-        }
-
-        /* Add a container for each image and text */
+        /* Add a container for each image */
         .photo-container {
-            margin-bottom: 40px;
+            margin-bottom: 40px; /* Space between images */
         }
 
-        .gallery img {
-            width: 90%;  /* Image takes up 90% of the page's width */
+        .about img {
+            width: 90%; /* Image takes up 90% of the page's width */
             max-width: 1200px;
             height: auto;
             border-radius: 8px;
@@ -91,45 +53,27 @@
     </style>
 </head>
 <body>
+    <header>
+        <h1>About</h1>
+    </header>
 
-    <!-- Sidebar with links -->
-    <div class="sidebar">
-        <h2>Links</h2>
-        <a href="index.html">Home</a> <!-- Link to home page -->
-        <a href="composites.html">Composites</a>
-        <a href="about.html">About</a>
-        <a href="music.html">Music</a>
-        <a href="gallery.html">Gallery</a>
-    </div>
-
-    <!-- Main gallery section -->
-    <div class="gallery">
-        <header>
-            <h1>Gallery</h1>
-        </header>
-
+    <div class="about">
+        <!-- Casino People -->
         <div class="photo-container">
-            <img src="photos/water3.jpg" alt="water3">
+            <img src="photos/casinopeople.jpg" alt="Casino people">
             <div class="description">
-                <p>waters3.</p>
+                <!-- Description removed -->
             </div>
         </div>
 
+        <!-- Casino Light -->
         <div class="photo-container">
-            <img src="photos/IMG_4834.jpg" alt="shower">
+            <img src="photos/casinolight.jpg" alt="Casino light">
             <div class="description">
-                <p>Shower.</p>
-            </div>
-        </div>
-
-        <div class="photo-container">
-            <img src="photos/i.jpg" alt="i">
-            <div class="description">
-                <p>I.</p>
+                <!-- Description removed -->
             </div>
         </div>
     </div>
-
 </body>
 </html>
 
