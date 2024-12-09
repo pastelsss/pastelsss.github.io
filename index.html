@@ -27,7 +27,7 @@
 
         h1 {
             margin: 0;
-            display: none;  /* Hide the "pastelsss" header */
+            display: none; /* Hide the "pastelsss" header */
         }
 
         main {
@@ -38,19 +38,20 @@
             align-items: center;
         }
 
-        /* Add a class for the "pastelsss" text */
+        /* Style for the "pastelsss" text */
         .pastelsss {
-            font-size: 8rem;  /* Adjust the size of the text */
+            font-size: 8rem; /* Adjust the size of the text */
             font-weight: 100; /* Thin font weight */
-            color: lightblue; /* Light blue color */
+            color: transparent; /* Make the inside transparent */
             letter-spacing: 5px; /* Space the letters out */
             writing-mode: vertical-lr; /* Display the text vertically */
-            text-shadow: 0 0 5px #ADD8E6, 0 0 10px #ADD8E6, 0 0 15px #ADD8E6; /* Light blue outline */
             margin: 0;
-            position: absolute;  /* Position the text independently */
-            left: 10%;  /* Move it a bit to the left */
-            top: 50%;  /* Align it to the middle vertically */
-            transform: translateY(-50%);  /* Vertically center it */
+            position: absolute; /* Position the text independently */
+            left: 10%; /* Move it a bit to the left */
+            top: 50%; /* Align it to the middle vertically */
+            transform: translateY(-50%); /* Vertically center it */
+            -webkit-text-stroke: 1px black; /* Add a black outline */
+            text-shadow: none; /* Remove the previous light blue outline */
         }
 
         /* Randomize the positioning of other elements */
@@ -62,11 +63,11 @@
 
         /* Randomized slight positioning */
         .randomize:nth-child(odd) {
-            margin-left: -30px;  /* Move a bit to the left */
+            margin-left: -30px; /* Move a bit to the left */
         }
 
         .randomize:nth-child(even) {
-            margin-left: 30px;  /* Move a bit to the right */
+            margin-left: 30px; /* Move a bit to the right */
         }
 
         a {
