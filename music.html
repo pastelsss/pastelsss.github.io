@@ -13,6 +13,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
         }
 
         header {
@@ -42,9 +44,13 @@
         }
 
         .music-content {
-            padding: 20px;
             text-align: center;
-            width: 100%;
+            margin-top: 20px;
+        }
+
+        audio {
+            width: 100%; /* Makes the player responsive */
+            max-width: 400px; /* Restricts the player width */
         }
     </style>
 </head>
@@ -60,8 +66,10 @@
     </header>
 
     <div class="music-content">
-        <h1>Music</h1>
-        <p>This is where your music content will go.</p>
+        <audio controls>
+            <source src="untitled track 1.1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
 
 </body>
