@@ -31,33 +31,49 @@
 
         nav a {
             text-decoration: none;
-            color: black;
+            color: black; /* Black text for the links */
             font-size: 1.2rem;
             font-weight: bold;
         }
 
         nav a:hover {
             text-decoration: underline;
-            text-decoration-color: lightblue;
+            text-decoration-color: lightblue; /* Light blue underline on hover */
         }
 
-        .about-content {
+        .composites-link {
+            margin-top: 20px; /* Space between nav and composites link */
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .composites-link a {
+            text-decoration: none;
+            color: black; /* Black text for composites link */
+        }
+
+        .composites-link a:hover {
+            text-decoration: underline;
+            text-decoration-color: lightblue; /* Light blue underline on hover */
+        }
+
+        .gallery {
             padding: 20px;
             text-align: center;
             width: 100%;
+            box-sizing: border-box;
         }
 
-        .about img {
-            width: 100px; /* Very small fixed width */
-            height: auto; /* Maintain aspect ratio */
+        .photo-container {
+            margin-bottom: 20px; /* Reduced spacing between images */
+        }
+
+        .gallery img {
+            width: 100%; /* Makes images responsive */
+            max-width: 600px; /* Restricts image width to prevent stretching */
+            height: auto;
             border-radius: 8px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .description {
-            font-size: 1.2rem;
-            color: #333;
-            margin-top: 20px; /* Add spacing between the image and text */
         }
     </style>
 </head>
@@ -72,12 +88,21 @@
         </nav>
     </header>
 
-    <div class="about-content">
-        <!-- Tiny image -->
-        <img src="photos/biketemp.jpg" alt="Bike">
-        <div class="description">
-            <p>Email: kylecamargo22@gmail.com</p>
-            <p>Instagram: uchoakyle</p>
+    <!-- Composites Link -->
+    <div class="composites-link">
+        <a href="composites.html">Composites</a>
+    </div>
+
+    <div class="gallery">
+        <!-- Replacing gallery photos with biketemp.jpg -->
+        <div class="photo-container">
+            <img src="photos/biketemp.jpg" alt="Bike Photo 1">
+        </div>
+        <div class="photo-container">
+            <img src="photos/biketemp.jpg" alt="Bike Photo 2">
+        </div>
+        <div class="photo-container">
+            <img src="photos/biketemp.jpg" alt="Bike Photo 3">
         </div>
     </div>
 
