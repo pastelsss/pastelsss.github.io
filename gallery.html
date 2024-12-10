@@ -31,13 +31,30 @@
 
         nav a {
             text-decoration: none;
-            color: #007BFF;
+            color: black; /* Black text for the links */
             font-size: 1.2rem;
             font-weight: bold;
         }
 
         nav a:hover {
             text-decoration: underline;
+            text-decoration-color: lightblue; /* Light blue underline on hover */
+        }
+
+        .composites-link {
+            margin-top: 20px; /* Space between nav and composites link */
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .composites-link a {
+            text-decoration: none;
+            color: black; /* Black text for composites link */
+        }
+
+        .composites-link a:hover {
+            text-decoration: underline;
+            text-decoration-color: lightblue; /* Light blue underline on hover */
         }
 
         .gallery {
@@ -58,21 +75,6 @@
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .composites-link {
-            margin-top: 30px;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .composites-link a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-
-        .composites-link a:hover {
-            text-decoration: underline;
-        }
-
     </style>
 </head>
 <body>
@@ -84,6 +86,11 @@
             <a href="about.html">About</a>
         </nav>
     </header>
+
+    <!-- Composites Link -->
+    <div class="composites-link">
+        <a href="composites.html">Composites</a>
+    </div>
 
     <div class="gallery">
         <!-- i.jpg -->
@@ -99,11 +106,6 @@
         <!-- Casino Light -->
         <div class="photo-container">
             <img src="photos/casinolight.jpg" alt="Casino light">
-        </div>
-
-        <!-- Composites Link -->
-        <div class="composites-link">
-            <a href="composites.html">Composites</a>
         </div>
     </div>
 
