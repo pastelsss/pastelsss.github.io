@@ -61,15 +61,16 @@
             padding: 20px;
             text-align: center;
             width: 100%;
+            box-sizing: border-box;
         }
 
         .photo-container {
-            margin-bottom: 40px;
+            margin-bottom: 20px; /* Reduced spacing between images */
         }
 
         .gallery img {
-            width: 100%; /* Makes images responsive, adjusting to the width of their container */
-            max-width: 800px; /* Sets a maximum width for larger screens (like laptops) */
+            width: 100%; /* Makes images responsive */
+            max-width: 600px; /* Restricts image width to prevent stretching */
             height: auto;
             border-radius: 8px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -78,8 +79,7 @@
         /* Media query for larger screens like laptops and desktops */
         @media (min-width: 768px) {
             .gallery img {
-                width: 80%; /* Reduces the image size to 80% of its container on larger screens */
-                max-width: 800px; /* Ensures the images don't grow too large */
+                max-width: 700px; /* Ensures images fit better on larger screens */
             }
         }
 
@@ -87,7 +87,7 @@
         @media (max-width: 767px) {
             .gallery img {
                 width: 90%; /* On smaller screens, images will take up 90% of the container width */
-                max-width: none; /* No maximum width restriction on smaller screens */
+                max-width: 100%; /* Removes max-width restriction */
             }
         }
     </style>
