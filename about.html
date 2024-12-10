@@ -57,23 +57,27 @@
             text-decoration-color: lightblue; /* Light blue underline on hover */
         }
 
-        .gallery {
+        .about-content {
             padding: 20px;
             text-align: center;
             width: 100%;
             box-sizing: border-box;
         }
 
-        .photo-container {
-            margin-bottom: 20px; /* Reduced spacing between images */
-        }
-
-        .gallery img {
-            width: 100%; /* Makes images responsive */
+        .about-content img {
+            width: 100%; /* Makes image responsive */
             max-width: 600px; /* Restricts image width to prevent stretching */
             height: auto;
             border-radius: 8px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+            color: black; /* Match link text color */
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -88,24 +92,18 @@
         </nav>
     </header>
 
-    <!-- Composites Link -->
-    <div class="composites-link">
-        <a href="composites.html">Composites</a>
-    </div>
-
-    <div class="gallery">
-        <!-- Replacing gallery photos with biketemp.jpg -->
-        <div class="photo-container">
-            <img src="photos/biketemp.jpg" alt="Bike Photo 1">
-        </div>
-        <div class="photo-container">
-            <img src="photos/biketemp.jpg" alt="Bike Photo 2">
-        </div>
-        <div class="photo-container">
-            <img src="photos/biketemp.jpg" alt="Bike Photo 3">
+    <!-- About Content -->
+    <div class="about-content">
+        <!-- Single Image -->
+        <img src="photos/biketemp.jpg" alt="Bike Photo">
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <p>Email: kylecamargo22@gmail.com</p>
+            <p>Instagram: uchoakyle</p>
         </div>
     </div>
 
 </body>
 </html>
+
 
