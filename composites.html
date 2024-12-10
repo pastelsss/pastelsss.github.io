@@ -41,30 +41,13 @@
             text-decoration-color: lightblue; /* Light blue underline on hover */
         }
 
-        .links-container {
-            margin-top: 20px; /* Space between nav and links */
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            gap: 20px;
+        .composites-content img {
+            width: 100%; /* Scale the image to fit the screen */
+            max-height: 90vh; /* Ensure the image fits within the viewport */
+            object-fit: cover; /* Maintain aspect ratio and fill space */
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .links-container a {
-            text-decoration: none;
-            color: black; /* Black text for the links */
-        }
-
-        .links-container a:hover {
-            text-decoration: underline;
-            text-decoration-color: lightblue; /* Light blue underline on hover */
-        }
-
-        .composites-content {
-            padding: 20px;
-            text-align: center;
-            width: 100%;
-        }
-
     </style>
 </head>
 <body>
@@ -74,22 +57,14 @@
             <a href="index.html">Home</a>
             <a href="music.html">Music</a>
             <a href="about.html">About</a>
+            <a href="gallery.html">Gallery</a>
         </nav>
     </header>
 
-    <!-- Composites and Gallery Links -->
-    <div class="links-container">
-        <a href="composites.html">Composites</a>
-        <a href="gallery.html">Gallery</a>
-    </div>
-
     <div class="composites-content">
-        <!-- Your content for the composites page goes here -->
-        <h1>Composites Content</h1>
-        <p>This is where you can showcase your composites!</p>
+        <img src="photos/water3.jpg" alt="Water Composite">
     </div>
 
 </body>
 </html>
 
-       
