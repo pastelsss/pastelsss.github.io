@@ -78,9 +78,11 @@
         /* Slideshow container for large images */
         .slideshow-container {
             position: relative;
-            width: 80%; /* Adjust width */
-            max-width: 800px;
-            height: 70vh; /* Adjust height */
+            width: 100%;
+            height: 100%;
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
         }
 
         .slides {
@@ -93,32 +95,20 @@
             object-fit: contain; /* Ensures images fit within the container */
         }
 
-        /* Navigation arrows */
-        .prev, .next {
+        /* Close button (X) */
+        .close-btn {
             position: absolute;
-            top: 50%;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0, 0, 0, 0.5);
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
             color: white;
+            background: none;
             border: none;
             cursor: pointer;
-            padding: 10px;
-            transform: translateY(-50%);
-            font-size: 20px;
-            z-index: 100;
         }
 
-        .prev {
-            left: 10px;
-        }
-
-        .next {
-            right: 10px;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.7);
+        .close-btn:hover {
+            color: lightgray;
         }
 
         /* Optional: Fade transition for the images */
@@ -131,7 +121,6 @@
             from { opacity: 0.4; }
             to { opacity: 1; }
         }
-
     </style>
 </head>
 <body>
@@ -160,7 +149,7 @@
     </div>
 
     <!-- Slideshow container -->
-    <div class="slideshow-container" id="slideshowContainer" style="display: none;">
+    <div class="slideshow-container" id="slideshowContainer">
         <!-- Fullscreen images -->
         <img class="slides fade" src="photos/ngv.jpg" alt="Image 1">
         <img class="slides fade" src="photos/casinolight.jpg" alt="Image 2">
@@ -170,20 +159,19 @@
         <img class="slides fade" src="photos/casinopeople.jpg" alt="Image 6">
         <img class="slides fade" src="photos/i.jpg" alt="Image 7">
 
-        <!-- Navigation Arrows -->
-        <button class="prev">&#10094;</button>
-        <button class="next">&#10095;</button>
+        <!-- Close button -->
+        <button class="close-btn" onclick="closeSlideshow()">X</button>
     </div>
 
     <script>
-        // Slideshow logic
         let slideIndex = 0;
 
-        // Function to open the slideshow
+        // Function to open the slideshow when clicked on any image preview
         function openSlideshow(index) {
             slideIndex = index; // Set the starting image index
             showSlides(slideIndex); // Show the selected image
-            document.getElementById("slideshowContainer").style.display = "block"; // Show the slideshow container
+            document.getElementById("slideshowContainer").style.display = "flex"; // Show the slideshow container
+            document.body.style.overflow = "hidden"; // Disable page scroll
         }
 
         // Function to show slides
@@ -203,19 +191,11 @@
             slides[slideIndex].style.display = "block";
         }
 
-        // Next/Previous controls
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+        // Close the slideshow when clicking the close button (X)
+        function closeSlideshow() {
+            document.getElementById("slideshowContainer").style.display = "none"; // Hide slideshow
+            document.body.style.overflow = "auto"; // Enable scrolling again
         }
-
-        // Event listeners for the arrows
-        document.querySelector(".prev").addEventListener("click", function() {
-            plusSlides(-1);
-        });
-
-        document.querySelector(".next").addEventListener("click", function() {
-            plusSlides(1);
-        });
     </script>
 
 </body>
