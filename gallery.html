@@ -9,10 +9,13 @@
             font-family: Source Code Pro, monospace;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #000; /* Black background to make images stand out */
+            color: white;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
 
         header {
@@ -20,8 +23,9 @@
             display: flex;
             justify-content: center;
             padding: 20px 0;
-            background-color: #fff;
-            border-bottom: 2px solid #ddd;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
         }
 
         nav {
@@ -31,74 +35,88 @@
 
         nav a {
             text-decoration: none;
-            color: black; /* Black text for the links */
+            color: white;
             font-size: 1.2rem;
             font-weight: bold;
         }
 
         nav a:hover {
             text-decoration: underline;
-            text-decoration-color: lightblue; /* Light blue underline on hover */
+            text-decoration-color: lightblue;
         }
 
         .composites-link {
-            margin-top: 20px; /* Space between nav and composites link */
+            margin-top: 20px;
             font-size: 1.5rem;
             font-weight: bold;
         }
 
         .composites-link a {
             text-decoration: none;
-            color: black; /* Black text for composites link */
+            color: white;
         }
 
         .composites-link a:hover {
             text-decoration: underline;
-            text-decoration-color: lightblue; /* Light blue underline on hover */
+            text-decoration-color: lightblue;
         }
 
-        .gallery {
-            padding: 40px;
-            width: 100%;
-            box-sizing: border-box;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid layout for images */
-            gap: 20px; /* Uniform gap between images */
-            justify-items: center; /* Centers images horizontally */
-        }
-
-        .photo-container {
-            width: 100%;
+        /* Fullscreen slideshow container */
+        .slideshow-container {
             position: relative;
-        }
-
-        .gallery img {
             width: 100%;
-            height: auto;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transform and opacity changes */
+            height: 100%;
         }
 
-        /* Hover effect: images will slightly zoom in */
-        .gallery img:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
+        .slides {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image covers full screen */
         }
 
-        /* Media query for larger screens like laptops and desktops */
-        @media (min-width: 768px) {
-            .gallery img {
-                max-width: 800px; /* Ensure images fit better on larger screens */
-            }
+        /* Navigation arrows */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            transform: translateY(-50%);
+            font-size: 20px;
+            z-index: 100;
         }
 
-        /* Media query for smaller screens (e.g., mobile devices) */
-        @media (max-width: 767px) {
-            .gallery img {
-                width: 90%; /* On smaller screens, images will take up 90% of the container width */
-                max-width: 100%; /* Removes max-width restriction */
-            }
+        .prev {
+            left: 10px;
         }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Optional: Fade transition for the images */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1s;
+        }
+
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
     </style>
 </head>
 <body>
@@ -112,38 +130,66 @@
         </nav>
     </header>
 
-    <!-- Composites Link -->
-    <div class="composites-link">
-        <a href="composites.html">Composites</a>
+    <div class="slideshow-container">
+        <!-- Images for the slideshow -->
+        <img class="slides fade" src="photos/ngv.jpg" alt="Image 1">
+        <img class="slides fade" src="photos/casinolight.jpg" alt="Image 2">
+        <img class="slides fade" src="photos/river.jpg" alt="Image 3">
+        <img class="slides fade" src="photos/train.jpg" alt="Image 4">
+        <img class="slides fade" src="photos/cityman.jpg" alt="Image 5">
+        <img class="slides fade" src="photos/casinopeople.jpg" alt="Image 6">
+        <img class="slides fade" src="photos/i.jpg" alt="Image 7">
+
+        <!-- Navigation Arrows -->
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
     </div>
 
-    <div class="gallery">
-        
-        <!-- New Images -->
-        <div class="photo-container">
-            <img src="photos/ngv.jpg" alt="ngv">
-        </div>
-        <div class="photo-container">
-            <img src="photos/casinolight.jpg" alt="Casino light">
-        </div>
-        <div class="photo-container">
-            <img src="photos/river.jpg" alt="River">
-        </div>
-        <div class="photo-container">
-            <img src="photos/train.jpg" alt="Train">
-        </div>
-        <div class="photo-container">
-            <img src="photos/cityman.jpg" alt="City Man">
-        </div>
-        <div class="photo-container">
-            <img src="photos/casinopeople.jpg" alt="Casino people">
-        </div>
-        <div class="photo-container">
-            <img src="photos/i.jpg" alt="Photo i">
-        </div>
+    <script>
+        // Slideshow logic
+        let slideIndex = 0;
 
-    </div>
+        // Function to show slides
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slides");
+            
+            // Loop back to the start or end when reaching the boundaries
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+            
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            // Show the current slide
+            slides[slideIndex].style.display = "block";
+        }
+
+        // Next/Previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Initial call to display the first image
+        showSlides(slideIndex);
+
+        // Event listeners for the arrows
+        document.querySelector(".prev").addEventListener("click", function() {
+            plusSlides(-1);
+        });
+
+        document.querySelector(".next").addEventListener("click", function() {
+            plusSlides(1);
+        });
+
+        // Optional: Auto slide show (if you want the images to change automatically)
+        setInterval(function() {
+            plusSlides(1);
+        }, 5000); // Change image every 5 seconds (optional)
+    </script>
 
 </body>
 </html>
+
 
