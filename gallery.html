@@ -58,28 +58,37 @@
         }
 
         .gallery {
-            padding: 20px;
-            text-align: center;
+            padding: 40px;
             width: 100%;
             box-sizing: border-box;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid layout for images */
+            gap: 20px; /* Uniform gap between images */
+            justify-items: center; /* Centers images horizontally */
         }
 
         .photo-container {
-            margin-bottom: 20px; /* Reduced spacing between images */
+            width: 100%;
+            position: relative;
         }
 
         .gallery img {
-            width: 100%; /* Makes images responsive */
-            max-width: 600px; /* Restricts image width to prevent stretching */
+            width: 100%;
             height: auto;
-            border-radius: 8px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transform and opacity changes */
+        }
+
+        /* Hover effect: images will slightly zoom in */
+        .gallery img:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
         }
 
         /* Media query for larger screens like laptops and desktops */
         @media (min-width: 768px) {
             .gallery img {
-                max-width: 700px; /* Ensures images fit better on larger screens */
+                max-width: 800px; /* Ensure images fit better on larger screens */
             }
         }
 
@@ -112,14 +121,11 @@
         
         <!-- New Images -->
         <div class="photo-container">
-            <img src="photos/ngv.jpg" alt="NGV">
-
+            <img src="photos/ngv.jpg" alt="ngv">
         </div>
-        <!-- Casino Light -->
         <div class="photo-container">
             <img src="photos/casinolight.jpg" alt="Casino light">
         </div>
-        
         <div class="photo-container">
             <img src="photos/river.jpg" alt="River">
         </div>
@@ -128,18 +134,16 @@
         </div>
         <div class="photo-container">
             <img src="photos/cityman.jpg" alt="City Man">
-
-        <!-- Casino People -->
+        </div>
         <div class="photo-container">
             <img src="photos/casinopeople.jpg" alt="Casino people">
         </div>
-
-        <!-- i.jpg -->
         <div class="photo-container">
             <img src="photos/i.jpg" alt="Photo i">
         </div>
-        </div>
+
     </div>
 
 </body>
 </html>
+
