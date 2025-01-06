@@ -9,7 +9,7 @@
             font-family: Source Code Pro, monospace;
             margin: 0;
             padding: 0;
-            background-color: #000; /* Black background for image contrast */
+            background-color: #000;
             color: white;
             display: flex;
             flex-direction: column;
@@ -65,7 +65,7 @@
         }
 
         .preview-container img {
-            width: 80px; /* Smaller preview size */
+            width: 80px;
             height: auto;
             border-radius: 5px;
             cursor: pointer;
@@ -86,7 +86,7 @@
             display: none; /* Hidden by default */
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.9); /* Dark background for full-screen effect */
+            background-color: rgba(0, 0, 0, 0.9);
         }
 
         .slides {
@@ -95,10 +95,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 1200px;
-            height: auto;
-            object-fit: contain; /* Ensures images fit within the container */
+            max-width: 90%; /* Adjust width to fit the screen */
+            max-height: 90%; /* Adjust height to fit the screen */
+            object-fit: contain; /* Ensure image is scaled properly */
         }
 
         /* Close button (X) */
@@ -152,6 +151,17 @@
             from { opacity: 0.4; }
             to { opacity: 1; }
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery-title {
+                font-size: 1.5rem;
+            }
+
+            .preview-container img {
+                width: 60px; /* Smaller previews for mobile */
+            }
+        }
     </style>
 </head>
 <body>
@@ -170,13 +180,13 @@
 
     <!-- Preview of smaller images -->
     <div class="preview-container">
-        <img src="photos/ngv.jpg" alt="ngv">
-        <img src="photos/casinolight.jpg" alt="Casino Light">
-        <img src="photos/river.jpg" alt="River">
-        <img src="photos/train.jpg" alt="Train">
-        <img src="photos/cityman.jpg" alt="City Man">
-        <img src="photos/casinopeople.jpg" alt="Casino People">
-        <img src="photos/i.jpg" alt="Photo i">
+        <img src="photos/ngv.jpg" alt="ngv" onclick="openSlideshow()">
+        <img src="photos/casinolight.jpg" alt="Casino Light" onclick="openSlideshow()">
+        <img src="photos/river.jpg" alt="River" onclick="openSlideshow()">
+        <img src="photos/train.jpg" alt="Train" onclick="openSlideshow()">
+        <img src="photos/cityman.jpg" alt="City Man" onclick="openSlideshow()">
+        <img src="photos/casinopeople.jpg" alt="Casino People" onclick="openSlideshow()">
+        <img src="photos/i.jpg" alt="Photo i" onclick="openSlideshow()">
     </div>
 
     <!-- Slideshow container -->
