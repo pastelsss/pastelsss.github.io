@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Composites</title>
+    <title>Gallery</title>
     <style>
         body {
             font-family: Source Code Pro, monospace;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #1d1d1d; /* Dark background */
+            color: white; /* White text */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -21,8 +22,8 @@
             display: flex;
             justify-content: center;
             padding: 20px 0;
-            background-color: #fff;
-            border-bottom: 2px solid #ddd;
+            background-color: #111; /* Darker header */
+            border-bottom: 2px solid #444;
         }
 
         nav {
@@ -32,7 +33,7 @@
 
         nav a {
             text-decoration: none;
-            color: black; /* Black text for the links */
+            color: white; /* White text for the links */
             font-size: 1.2rem;
             font-weight: bold;
         }
@@ -42,11 +43,12 @@
             text-decoration-color: lightblue; /* Light blue underline on hover */
         }
 
-        .composites-title {
-            margin-top: 80px;
+        .composites-title, .gallery-title {
+            margin-top: 40px;
             font-size: 2rem;
             font-weight: bold;
             cursor: pointer;
+            color: white;
         }
 
         .preview-container {
@@ -79,7 +81,7 @@
             display: none; /* Hidden by default */
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.9); /* Dark background for the slideshow */
         }
 
         .slides {
@@ -147,7 +149,7 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .composites-title {
+            .composites-title, .gallery-title {
                 font-size: 1.5rem;
             }
 
@@ -168,6 +170,18 @@
         </nav>
     </header>
 
+    <!-- 2024 Gallery Title -->
+    <div class="gallery-title" onclick="openSlideshow('2024')">2024 Gallery</div>
+
+    <!-- Preview of smaller images for 2024 Gallery -->
+    <div class="preview-container">
+        <img src="photos/ngv.jpg" alt="ngv" onclick="openSlideshow('2024')">
+        <img src="photos/casinolight.jpg" alt="Casino light" onclick="openSlideshow('2024')">
+        <img src="photos/river.jpg" alt="River" onclick="openSlideshow('2024')">
+        <img src="photos/train.jpg" alt="Train" onclick="openSlideshow('2024')">
+        <img src="photos/cityman.jpg" alt="City Man" onclick="openSlideshow('2024')">
+    </div>
+
     <!-- Composites Title -->
     <div class="composites-title" onclick="openSlideshow('composites')">Composites</div>
 
@@ -178,8 +192,15 @@
         <img src="photos/wavesplit.jpg" alt="Wave Split Composite" onclick="openSlideshow('composites')">
     </div>
 
-    <!-- Slideshow container for Composites -->
+    <!-- Slideshow container for both 2024 Gallery and Composites -->
     <div class="slideshow-container" id="slideshowContainer">
+        <!-- Fullscreen images for 2024 Gallery -->
+        <img class="slides fade" src="photos/ngv.jpg" alt="ngv" data-gallery="2024">
+        <img class="slides fade" src="photos/casinolight.jpg" alt="Casino light" data-gallery="2024">
+        <img class="slides fade" src="photos/river.jpg" alt="River" data-gallery="2024">
+        <img class="slides fade" src="photos/train.jpg" alt="Train" data-gallery="2024">
+        <img class="slides fade" src="photos/cityman.jpg" alt="City Man" data-gallery="2024">
+
         <!-- Fullscreen images for Composites -->
         <img class="slides fade" src="photos/water3.jpg" alt="Water Composite" data-gallery="composites">
         <img class="slides fade" src="photos/door.jpg" alt="Door Composite" data-gallery="composites">
@@ -196,7 +217,7 @@
     <script>
         let slideIndex = 0;
 
-        // Function to open the slideshow when clicking on Composites
+        // Function to open the slideshow when clicking on Composites or 2024 Gallery
         function openSlideshow(gallery) {
             slideIndex = 0; // Start from the first image
             showSlides(gallery, slideIndex); // Show the first image
@@ -204,7 +225,7 @@
             document.body.style.overflow = "hidden"; // Disable page scroll
         }
 
-        // Function to show slides for Composites
+        // Function to show slides for a given gallery
         function showSlides(gallery, n) {
             let slides = document.querySelectorAll(`img[data-gallery="${gallery}"]`);
 
@@ -221,19 +242,4 @@
             slides[slideIndex].style.display = "block";
         }
 
-        // Function to navigate through images
-        function plusSlides(n) {
-            slideIndex += n;
-            showSlides('composites', slideIndex);
-        }
-
-        // Close the slideshow when clicking the close button (X)
-        function closeSlideshow() {
-            document.getElementById("slideshowContainer").style.display = "none"; // Hide slideshow
-            document.body.style.overflow = "auto"; // Enable scrolling again
-        }
-    </script>
-
-</body>
-</html>
 
