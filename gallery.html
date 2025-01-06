@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2024 Gallery</title>
+    <title>Composites</title>
     <style>
         body {
             font-family: Source Code Pro, monospace;
             margin: 0;
             padding: 0;
-            background-color: #000;
-            color: white;
+            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
             text-align: center;
         }
 
@@ -25,9 +21,8 @@
             display: flex;
             justify-content: center;
             padding: 20px 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            position: absolute;
-            top: 0;
+            background-color: #fff;
+            border-bottom: 2px solid #ddd;
         }
 
         nav {
@@ -37,25 +32,23 @@
 
         nav a {
             text-decoration: none;
-            color: white;
+            color: black; /* Black text for the links */
             font-size: 1.2rem;
             font-weight: bold;
         }
 
         nav a:hover {
             text-decoration: underline;
-            text-decoration-color: lightblue;
+            text-decoration-color: lightblue; /* Light blue underline on hover */
         }
 
-        /* Gallery Title */
-        .gallery-title {
-            margin-top: 100px;
+        .composites-title {
+            margin-top: 80px;
             font-size: 2rem;
             font-weight: bold;
             cursor: pointer;
         }
 
-        /* Thumbnail images preview */
         .preview-container {
             display: flex;
             justify-content: center;
@@ -95,8 +88,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            max-width: 90%; /* Adjust width to fit the screen */
-            max-height: 90%; /* Adjust height to fit the screen */
+            max-width: 90%;
+            max-height: 90%;
             object-fit: contain; /* Ensure image is scaled properly */
         }
 
@@ -154,7 +147,7 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .gallery-title {
+            .composites-title {
                 font-size: 1.5rem;
             }
 
@@ -175,30 +168,22 @@
         </nav>
     </header>
 
-    <!-- Gallery Title -->
-    <div class="gallery-title" onclick="openSlideshow()">2024 Gallery</div>
+    <!-- Composites Title -->
+    <div class="composites-title" onclick="openSlideshow('composites')">Composites</div>
 
-    <!-- Preview of smaller images -->
+    <!-- Preview of smaller images for Composites -->
     <div class="preview-container">
-        <img src="photos/ngv.jpg" alt="ngv" onclick="openSlideshow()">
-        <img src="photos/casinolight.jpg" alt="Casino Light" onclick="openSlideshow()">
-        <img src="photos/river.jpg" alt="River" onclick="openSlideshow()">
-        <img src="photos/train.jpg" alt="Train" onclick="openSlideshow()">
-        <img src="photos/cityman.jpg" alt="City Man" onclick="openSlideshow()">
-        <img src="photos/casinopeople.jpg" alt="Casino People" onclick="openSlideshow()">
-        <img src="photos/i.jpg" alt="Photo i" onclick="openSlideshow()">
+        <img src="photos/water3.jpg" alt="Water Composite" onclick="openSlideshow('composites')">
+        <img src="photos/door.jpg" alt="Door Composite" onclick="openSlideshow('composites')">
+        <img src="photos/wavesplit.jpg" alt="Wave Split Composite" onclick="openSlideshow('composites')">
     </div>
 
-    <!-- Slideshow container -->
+    <!-- Slideshow container for Composites -->
     <div class="slideshow-container" id="slideshowContainer">
-        <!-- Fullscreen images -->
-        <img class="slides fade" src="photos/ngv.jpg" alt="Image 1">
-        <img class="slides fade" src="photos/casinolight.jpg" alt="Image 2">
-        <img class="slides fade" src="photos/river.jpg" alt="Image 3">
-        <img class="slides fade" src="photos/train.jpg" alt="Image 4">
-        <img class="slides fade" src="photos/cityman.jpg" alt="Image 5">
-        <img class="slides fade" src="photos/casinopeople.jpg" alt="Image 6">
-        <img class="slides fade" src="photos/i.jpg" alt="Image 7">
+        <!-- Fullscreen images for Composites -->
+        <img class="slides fade" src="photos/water3.jpg" alt="Water Composite" data-gallery="composites">
+        <img class="slides fade" src="photos/door.jpg" alt="Door Composite" data-gallery="composites">
+        <img class="slides fade" src="photos/wavesplit.jpg" alt="Wave Split Composite" data-gallery="composites">
 
         <!-- Close button -->
         <button class="close-btn" onclick="closeSlideshow()">X</button>
@@ -211,17 +196,17 @@
     <script>
         let slideIndex = 0;
 
-        // Function to open the slideshow when clicking on "2024 Gallery"
-        function openSlideshow() {
+        // Function to open the slideshow when clicking on Composites
+        function openSlideshow(gallery) {
             slideIndex = 0; // Start from the first image
-            showSlides(slideIndex); // Show the first image
+            showSlides(gallery, slideIndex); // Show the first image
             document.getElementById("slideshowContainer").style.display = "flex"; // Show the slideshow container
             document.body.style.overflow = "hidden"; // Disable page scroll
         }
 
-        // Function to show slides
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("slides");
+        // Function to show slides for Composites
+        function showSlides(gallery, n) {
+            let slides = document.querySelectorAll(`img[data-gallery="${gallery}"]`);
 
             // Loop back to the start or end when reaching the boundaries
             if (n >= slides.length) { slideIndex = 0; }
@@ -239,7 +224,7 @@
         // Function to navigate through images
         function plusSlides(n) {
             slideIndex += n;
-            showSlides(slideIndex);
+            showSlides('composites', slideIndex);
         }
 
         // Close the slideshow when clicking the close button (X)
@@ -251,5 +236,4 @@
 
 </body>
 </html>
-
 
