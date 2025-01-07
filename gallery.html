@@ -141,81 +141,75 @@
         <h2>Composites</h2>
         <div class="preview-images">
             <!-- Images for preview in the composites section -->
-            <img src="photos/water3.jpg" alt="Water Composite" onclick="openSlideshow(7, 'composites')">
-            <img src="photos/door.jpg" alt="Door Composite" onclick="openSlideshow(8, 'composites')">
-            <img src="photos/wavesplit.jpg" alt="Wave Split Composite" onclick="openSlideshow(9, 'composites')">
+            <img src="photos/water3.jpg" alt="Water Composite" onclick="openSlideshow(0, 'composites')">
+            <img src="photos/door.jpg" alt="Door Composite" onclick="openSlideshow(1, 'composites')">
+            <img src="photos/wavesplit.jpg" alt="Wave Split Composite" onclick="openSlideshow(2, 'composites')">
         </div>
     </div>
 
-    <!-- Slideshow -->
+    <!-- Slideshow Modal -->
     <div class="slideshow" id="slideshow">
         <button class="close-btn" onclick="closeSlideshow()">X</button>
-        <button class="arrow-btn left" onclick="navigateSlide(-1)">&#8592;</button>
+        <button class="arrow-btn left" onclick="changeImage(-1)">&#10094;</button>
         <img id="slideshow-image" src="" alt="Slideshow Image">
-        <button class="arrow-btn right" onclick="navigateSlide(1)">&#8594;</button>
+        <button class="arrow-btn right" onclick="changeImage(1)">&#10095;</button>
     </div>
 
     <script>
-        // Array of all the images for the slideshow
-        const images = {
-            "2024": [
-                "photos/ngv.jpg",
-                "photos/casinolight.jpg",
-                "photos/river.jpg",
-                "photos/train.jpg",
-                "photos/cityman.jpg",
-                "photos/casinopeople.jpg",
-                "photos/i.jpg"
+        const galleryData = {
+            '2024': [
+                'photos/ngv.jpg',
+                'photos/casinolight.jpg',
+                'photos/river.jpg',
+                'photos/train.jpg',
+                'photos/cityman.jpg',
+                'photos/casinopeople.jpg',
+                'photos/i.jpg',
             ],
-            "composites": [
-                "photos/water3.jpg",
-                "photos/door.jpg",
-                "photos/wavesplit.jpg"
+            'composites': [
+                'photos/water3.jpg',
+                'photos/door.jpg',
+                'photos/wavesplit.jpg',
             ]
         };
 
-        let currentSlideIndex = -1;
-        let currentGallery = '';
+        let currentGallery = '2024'; // Default gallery
+        let currentImageIndex = 0; // Default to the first image
 
-        // Function to open the slideshow with the selected image
-        function openSlideshow(index, gallery) {
+        // Open the gallery when clicking on 2024 Gallery or Composites
+        function openGallery(gallery) {
             currentGallery = gallery;
-            currentSlideIndex = index;
-            const slideshow = document.getElementById('slideshow');
-            const slideshowImage = document.getElementById('slideshow-image');
-            slideshowImage.src = images[gallery][currentSlideIndex];
-            slideshow.style.display = 'flex';
+            currentImageIndex = 0; // Start with the first image
+            openSlideshow(currentImageIndex, gallery);
         }
 
-        // Function to close the slideshow
+        // Open slideshow with the selected image
+        function openSlideshow(index, gallery) {
+            currentImageIndex = index;
+            const image = galleryData[gallery][index];
+            document.getElementById('slideshow-image').src = image;
+            document.getElementById('slideshow').style.display = 'flex';
+        }
+
+        // Close the slideshow
         function closeSlideshow() {
             document.getElementById('slideshow').style.display = 'none';
         }
 
-        // Function to navigate between slides
-        function navigateSlide(direction) {
-            currentSlideIndex += direction;
-            const gallery = currentGallery;
-            if (currentSlideIndex < 0) {
-                currentSlideIndex = images[gallery].length - 1; // Loop to the last image
-            } else if (currentSlideIndex >= images[gallery].length) {
-                currentSlideIndex = 0; // Loop to the first image
-            }
-            document.getElementById('slideshow-image').src = images[gallery][currentSlideIndex];
-        }
-
-        // Function to open the gallery when clicking on the text
-        function openGallery(gallery) {
-            currentGallery = gallery;
-            currentSlideIndex = 0; // Start from the first image
-            const slideshow = document.getElementById('slideshow');
-            const slideshowImage = document.getElementById('slideshow-image');
-            slideshowImage.src = images[gallery][currentSlideIndex];
-            slideshow.style.display = 'flex';
+        // Change the image in the slideshow
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            const totalImages = galleryData[currentGallery].length;
+            if (currentImageIndex < 0) currentImageIndex = totalImages - 1;
+            if (currentImageIndex >= totalImages) currentImageIndex = 0;
+            const image = galleryData[currentGallery][currentImageIndex];
+            document.getElementById('slideshow-image').src = image;
         }
     </script>
+
 </body>
 </html>
+
 
 
 
