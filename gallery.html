@@ -82,6 +82,7 @@
             justify-content: center;
             align-items: center;
             background-color: rgba(0, 0, 0, 0.9); /* Dark background for the slideshow */
+            z-index: 1000;
         }
 
         .slides {
@@ -236,14 +237,6 @@
             if (n < 0) { slideIndex = slides.length - 1; }
 
             // Hide all slides
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
+            for (let i = 0
 
-            // Show the current slide
-            slides[slideIndex].style.display = "block";
-        }
-
-        // Function to navigate to the next/previous slide
-        function plusSlides
 
