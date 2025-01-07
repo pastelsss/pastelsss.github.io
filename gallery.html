@@ -215,7 +215,7 @@
         <button class="arrow-btn next-btn" onclick="plusSlides(1)">&#10095;</button>
     </div>
 
-    <!-- Place script tags at the bottom of the body -->
+    <!-- Move script tag to the bottom to ensure elements are loaded -->
     <script>
         let slideIndex = 0;
         let currentGallery = ""; // Variable to track the current gallery (2024 or composites)
@@ -225,16 +225,7 @@
             currentGallery = gallery; // Store the current gallery (either '2024' or 'composites')
             slideIndex = 0; // Start from the first image
             showSlides(gallery, slideIndex); // Show the first image for the selected gallery
-            document.getElementById("slideshowContainer").style.display = "flex"; // Show the slideshow container
-            document.body.style.overflow = "hidden"; // Disable page scroll
-        }
-
-        // Function to show slides for a given gallery
-        function showSlides(gallery, n) {
-            let slides = document.querySelectorAll(`img[data-gallery="${gallery}"]`);
-
-            // Loop back to
-
+            document.getElementById("slideshowContainer").style.display
 
 
 
