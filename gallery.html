@@ -215,6 +215,7 @@
         <button class="arrow-btn next-btn" onclick="plusSlides(1)">&#10095;</button>
     </div>
 
+    <!-- Place script tags at the bottom of the body -->
     <script>
         let slideIndex = 0;
         let currentGallery = ""; // Variable to track the current gallery (2024 or composites)
@@ -232,11 +233,8 @@
         function showSlides(gallery, n) {
             let slides = document.querySelectorAll(`img[data-gallery="${gallery}"]`);
 
-            // Loop back to the start or end when reaching the boundaries
-            if (n >= slides.length) { slideIndex = 0; }
-            if (n < 0) { slideIndex = slides.length - 1; }
+            // Loop back to
 
-            // Hide
 
 
 
