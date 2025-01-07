@@ -9,12 +9,11 @@
             font-family: Source Code Pro, monospace;
             margin: 0;
             padding: 0;
-            background-color: #1d1d1d; /* Dark background */
-            color: white; /* White text */
+            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            overflow-x: hidden;
         }
 
         header {
@@ -22,8 +21,8 @@
             display: flex;
             justify-content: center;
             padding: 20px 0;
-            background-color: #111; /* Darker header */
-            border-bottom: 2px solid #444;
+            background-color: #333;
+            border-bottom: 2px solid #ddd;
         }
 
         nav {
@@ -33,130 +32,98 @@
 
         nav a {
             text-decoration: none;
-            color: white; /* White text for the links */
+            color: white;
             font-size: 1.2rem;
             font-weight: bold;
         }
 
         nav a:hover {
             text-decoration: underline;
-            text-decoration-color: lightblue; /* Light blue underline on hover */
+            text-decoration-color: lightblue;
         }
 
-        .composites-title, .gallery-title {
-            margin-top: 40px;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            color: white;
-        }
-
-        .preview-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .composites-link, .gallery-link {
             margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .preview-container img {
-            width: 80px;
-            height: auto;
-            border-radius: 5px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: black;
             cursor: pointer;
-            transition: transform 0.3s ease;
         }
 
-        .preview-container img:hover {
-            transform: scale(1.1);
+        .composites-link:hover, .gallery-link:hover {
+            text-decoration: underline;
+            text-decoration-color: lightblue;
         }
 
-        /* Slideshow container for large images */
-        .slideshow-container {
+        /* Gallery preview grid */
+        .gallery-previews {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .previewImage {
+            width: 120px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        /* Slideshow container */
+        #slideshowContainer {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: none; /* Hidden by default */
+            background: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.9); /* Dark background for the slideshow */
-            z-index: 1000;
+            z-index: 9999;
         }
 
-        .slides {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .slideshow-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             max-width: 90%;
             max-height: 90%;
-            object-fit: contain; /* Ensure image is scaled properly */
         }
 
-        /* Close button (X) */
+        .slideshow-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh; /* Make images fit in the viewport */
+        }
+
         .close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 40px;
+            top: 10px;
+            right: 10px;
             color: white;
-            background: none;
-            border: none;
+            font-size: 2rem;
             cursor: pointer;
+            z-index: 100;
         }
 
-        .close-btn:hover {
-            color: lightgray;
-        }
-
-        /* Arrow buttons for navigation */
-        .arrow-btn {
+        .arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 40px;
+            font-size: 3rem;
             color: white;
-            background: none;
-            border: none;
             cursor: pointer;
-            z-index: 10;
+            z-index: 100;
         }
 
-        .arrow-btn:hover {
-            color: lightgray;
+        .arrow-left {
+            left: 10px;
         }
 
-        .prev-btn {
-            left: 20px;
-        }
-
-        .next-btn {
-            right: 20px;
-        }
-
-        /* Optional: Fade transition for the images */
-        .fade {
-            animation-name: fade;
-            animation-duration: 1s;
-        }
-
-        @keyframes fade {
-            from { opacity: 0.4; }
-            to { opacity: 1; }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .composites-title, .gallery-title {
-                font-size: 1.5rem;
-            }
-
-            .preview-container img {
-                width: 60px; /* Smaller previews for mobile */
-            }
+        .arrow-right {
+            right: 10px;
         }
     </style>
 </head>
@@ -166,78 +133,100 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="music.html">Music</a>
-            <a href="gallery.html">Gallery</a>
+            <a href="gallery.html" id="openGallery">Gallery</a>
             <a href="about.html">About</a>
         </nav>
     </header>
 
-    <!-- 2024 Gallery Title -->
-    <div class="gallery-title" id="open2024Gallery">2024 Gallery</div>
-
-    <!-- Preview of smaller images for 2024 Gallery -->
-    <div class="preview-container">
-        <img src="photos/ngv.jpg" alt="ngv" class="previewImage" data-gallery="2024">
-        <img src="photos/casinolight.jpg" alt="Casino light" class="previewImage" data-gallery="2024">
-        <img src="photos/river.jpg" alt="River" class="previewImage" data-gallery="2024">
-        <img src="photos/train.jpg" alt="Train" class="previewImage" data-gallery="2024">
-        <img src="photos/cityman.jpg" alt="City Man" class="previewImage" data-gallery="2024">
+    <div id="2024Gallery" class="gallery-link">
+        <span>2024 Gallery</span>
     </div>
 
-    <!-- Composites Title -->
-    <div class="composites-title" id="openCompositesGallery">Composites</div>
-
-    <!-- Preview of smaller images for Composites -->
-    <div class="preview-container">
-        <img src="photos/water3.jpg" alt="Water Composite" class="previewImage" data-gallery="composites">
-        <img src="photos/door.jpg" alt="Door Composite" class="previewImage" data-gallery="composites">
-        <img src="photos/wavesplit.jpg" alt="Wave Split Composite" class="previewImage" data-gallery="composites">
+    <div id="compositesGallery" class="gallery-link">
+        <span>Composites</span>
     </div>
 
-    <!-- Slideshow container for both 2024 Gallery and Composites -->
-    <div class="slideshow-container" id="slideshowContainer">
-        <!-- Fullscreen images for 2024 Gallery -->
-        <img class="slides fade" src="photos/ngv.jpg" alt="ngv" data-gallery="2024">
-        <img class="slides fade" src="photos/casinolight.jpg" alt="Casino light" data-gallery="2024">
-        <img class="slides fade" src="photos/river.jpg" alt="River" data-gallery="2024">
-        <img class="slides fade" src="photos/train.jpg" alt="Train" data-gallery="2024">
-        <img class="slides fade" src="photos/cityman.jpg" alt="City Man" data-gallery="2024">
-
-        <!-- Fullscreen images for Composites -->
-        <img class="slides fade" src="photos/water3.jpg" alt="Water Composite" data-gallery="composites">
-        <img class="slides fade" src="photos/door.jpg" alt="Door Composite" data-gallery="composites">
-        <img class="slides fade" src="photos/wavesplit.jpg" alt="Wave Split Composite" data-gallery="composites">
-
-        <!-- Close button -->
-        <button class="close-btn" onclick="closeSlideshow()">X</button>
-
-        <!-- Arrow navigation buttons -->
-        <button class="arrow-btn prev-btn" onclick="plusSlides(-1)">&#10094;</button>
-        <button class="arrow-btn next-btn" onclick="plusSlides(1)">&#10095;</button>
+    <div class="gallery-previews">
+        <!-- Preview of images for gallery -->
+        <img src="photos/ngv.jpg" class="previewImage" data-gallery="2024">
+        <img src="photos/casinolight.jpg" class="previewImage" data-gallery="2024">
+        <img src="photos/river.jpg" class="previewImage" data-gallery="2024">
+        <img src="photos/train.jpg" class="previewImage" data-gallery="2024">
     </div>
 
-    <!-- Script to handle event listeners -->
+    <div class="gallery-previews">
+        <!-- Preview of images for composites -->
+        <img src="photos/water3.jpg" class="previewImage" data-gallery="composites">
+        <img src="photos/door.jpg" class="previewImage" data-gallery="composites">
+        <img src="photos/wavesplit.jpg" class="previewImage" data-gallery="composites">
+    </div>
+
+    <!-- Slideshow Container -->
+    <div id="slideshowContainer">
+        <div class="slideshow-content">
+            <img src="" alt="Slideshow Image" id="slideshowImage">
+            <span class="close-btn" onclick="closeSlideshow()">×</span>
+            <span class="arrow arrow-left" onclick="plusSlides(-1)">&#10094;</span>
+            <span class="arrow arrow-right" onclick="plusSlides(1)">&#10095;</span>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize variables
             let slideIndex = 0;
-            let currentGallery = ""; // Variable to track the current gallery (2024 or composites)
+            let currentGallery = "";
 
-            // Function to open the slideshow when clicking on Composites or 2024 Gallery
+            // Function to open slideshow
             function openSlideshow(gallery) {
-                currentGallery = gallery; // Store the current gallery (either '2024' or 'composites')
+                console.log(`Opening ${gallery} slideshow`); // Log when opening slideshow
+                currentGallery = gallery; // Set the gallery
                 slideIndex = 0; // Start from the first image
-                showSlides(gallery, slideIndex); // Show the first image for the selected gallery
+                showSlides(gallery, slideIndex); // Show the first image
                 document.getElementById("slideshowContainer").style.display = "flex"; // Show the slideshow container
-                document.body.style.overflow = "hidden"; // Disable page scroll
+                document.body.style.overflow = "hidden"; // Disable scroll
             }
 
-            // Function to show slides for a given gallery
+            // Function to show slides
             function showSlides(gallery, n) {
+                console.log(`Showing slide for ${gallery}`); // Log when showing slide
                 let slides = document.querySelectorAll(`img[data-gallery="${gallery}"]`);
+                document.getElementById("slideshowImage").src = slides[slideIndex].src;
+            }
 
-                // Loop through all slides and hide them
-                slides.forEach((slide) => slide.style.display = "none");
+            // Function for previous/next slides
+            function plusSlides(n) {
+                slideIndex += n;
+                let slides = document.querySelectorAll(`img[data-gallery="${currentGallery}"]`);
+                if (slideIndex >= slides.length) { slideIndex = 0; }
+                if (slideIndex < 0) { slideIndex = slides.length - 1; }
+                showSlides(currentGallery, slideIndex);
+            }
 
-                //
+            // Function to close slideshow
+            function closeSlideshow() {
+                document.getElementById("slideshowContainer").style.display = "none";
+                document.body.style.overflow = "auto"; // Re-enable page scroll
+            }
+
+            // Attach event listeners to gallery links
+            document.getElementById("2024Gallery").addEventListener("click", function() {
+                openSlideshow('2024');
+            });
+
+            document.getElementById("compositesGallery").addEventListener("click", function() {
+                openSlideshow('composites');
+            });
+
+            // Event listeners for preview images
+            const previewImages = document.querySelectorAll('.previewImage');
+            previewImages.forEach(function (img) {
+                img.addEventListener("click", function() {
+                    openSlideshow(img.dataset.gallery);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
 
 
