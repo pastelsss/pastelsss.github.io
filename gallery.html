@@ -216,11 +216,13 @@
 
     <script>
         let slideIndex = 0;
+        let currentGallery = ""; // Variable to track the current gallery (2024 or composites)
 
         // Function to open the slideshow when clicking on Composites or 2024 Gallery
         function openSlideshow(gallery) {
+            currentGallery = gallery; // Store the current gallery (either '2024' or 'composites')
             slideIndex = 0; // Start from the first image
-            showSlides(gallery, slideIndex); // Show the first image
+            showSlides(gallery, slideIndex); // Show the first image for the selected gallery
             document.getElementById("slideshowContainer").style.display = "flex"; // Show the slideshow container
             document.body.style.overflow = "hidden"; // Disable page scroll
         }
@@ -242,4 +244,6 @@
             slides[slideIndex].style.display = "block";
         }
 
+        // Function to navigate to the next/previous slide
+        function plusSlides
 
