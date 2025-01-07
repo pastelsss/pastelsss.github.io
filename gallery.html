@@ -35,6 +35,7 @@
             color: white;
             font-size: 1.2rem;
             font-weight: bold;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -119,30 +120,30 @@
 
     <header>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="music.html">Music</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="about.html">About</a>
+            <a href="javascript:void(0)" onclick="openGallery('2024')">2024 Gallery</a>
+            <a href="javascript:void(0)" onclick="openGallery('composites')">Composites</a>
         </nav>
     </header>
 
     <div class="gallery">
-        <h2>2024 Gallery</h2>
+        <h2>Gallery Preview</h2>
         <div class="preview-images">
-            <img src="photos/ngv.jpg" alt="ngv" onclick="openSlideshow(0)">
-            <img src="photos/casinolight.jpg" alt="Casino Light" onclick="openSlideshow(1)">
-            <img src="photos/river.jpg" alt="River" onclick="openSlideshow(2)">
-            <img src="photos/train.jpg" alt="Train" onclick="openSlideshow(3)">
-            <img src="photos/cityman.jpg" alt="City Man" onclick="openSlideshow(4)">
-            <img src="photos/casinopeople.jpg" alt="Casino People" onclick="openSlideshow(5)">
-            <img src="photos/i.jpg" alt="Photo i" onclick="openSlideshow(6)">
+            <!-- Images for preview in the 2024 gallery -->
+            <img src="photos/ngv.jpg" alt="ngv" onclick="openSlideshow(0, '2024')">
+            <img src="photos/casinolight.jpg" alt="Casino Light" onclick="openSlideshow(1, '2024')">
+            <img src="photos/river.jpg" alt="River" onclick="openSlideshow(2, '2024')">
+            <img src="photos/train.jpg" alt="Train" onclick="openSlideshow(3, '2024')">
+            <img src="photos/cityman.jpg" alt="City Man" onclick="openSlideshow(4, '2024')">
+            <img src="photos/casinopeople.jpg" alt="Casino People" onclick="openSlideshow(5, '2024')">
+            <img src="photos/i.jpg" alt="Photo i" onclick="openSlideshow(6, '2024')">
         </div>
 
         <h2>Composites</h2>
         <div class="preview-images">
-            <img src="photos/water3.jpg" alt="Water Composite" onclick="openSlideshow(7)">
-            <img src="photos/door.jpg" alt="Door Composite" onclick="openSlideshow(8)">
-            <img src="photos/wavesplit.jpg" alt="Wave Split Composite" onclick="openSlideshow(9)">
+            <!-- Images for preview in the composites section -->
+            <img src="photos/water3.jpg" alt="Water Composite" onclick="openSlideshow(7, 'composites')">
+            <img src="photos/door.jpg" alt="Door Composite" onclick="openSlideshow(8, 'composites')">
+            <img src="photos/wavesplit.jpg" alt="Wave Split Composite" onclick="openSlideshow(9, 'composites')">
         </div>
     </div>
 
@@ -156,27 +157,33 @@
 
     <script>
         // Array of all the images for the slideshow
-        const images = [
-            "photos/ngv.jpg",
-            "photos/casinolight.jpg",
-            "photos/river.jpg",
-            "photos/train.jpg",
-            "photos/cityman.jpg",
-            "photos/casinopeople.jpg",
-            "photos/i.jpg",
-            "photos/water3.jpg",
-            "photos/door.jpg",
-            "photos/wavesplit.jpg"
-        ];
+        const images = {
+            "2024": [
+                "photos/ngv.jpg",
+                "photos/casinolight.jpg",
+                "photos/river.jpg",
+                "photos/train.jpg",
+                "photos/cityman.jpg",
+                "photos/casinopeople.jpg",
+                "photos/i.jpg"
+            ],
+            "composites": [
+                "photos/water3.jpg",
+                "photos/door.jpg",
+                "photos/wavesplit.jpg"
+            ]
+        };
 
         let currentSlideIndex = -1;
+        let currentGallery = '';
 
         // Function to open the slideshow with the selected image
-        function openSlideshow(index) {
+        function openSlideshow(index, gallery) {
+            currentGallery = gallery;
             currentSlideIndex = index;
             const slideshow = document.getElementById('slideshow');
             const slideshowImage = document.getElementById('slideshow-image');
-            slideshowImage.src = images[currentSlideIndex];
+            slideshowImage.src = images[gallery][currentSlideIndex];
             slideshow.style.display = 'flex';
         }
 
@@ -188,12 +195,23 @@
         // Function to navigate between slides
         function navigateSlide(direction) {
             currentSlideIndex += direction;
+            const gallery = currentGallery;
             if (currentSlideIndex < 0) {
-                currentSlideIndex = images.length - 1; // Loop to the last image
-            } else if (currentSlideIndex >= images.length) {
+                currentSlideIndex = images[gallery].length - 1; // Loop to the last image
+            } else if (currentSlideIndex >= images[gallery].length) {
                 currentSlideIndex = 0; // Loop to the first image
             }
-            document.getElementById('slideshow-image').src = images[currentSlideIndex];
+            document.getElementById('slideshow-image').src = images[gallery][currentSlideIndex];
+        }
+
+        // Function to open the gallery when clicking on the text
+        function openGallery(gallery) {
+            currentGallery = gallery;
+            currentSlideIndex = 0; // Start from the first image
+            const slideshow = document.getElementById('slideshow');
+            const slideshowImage = document.getElementById('slideshow-image');
+            slideshowImage.src = images[gallery][currentSlideIndex];
+            slideshow.style.display = 'flex';
         }
     </script>
 </body>
