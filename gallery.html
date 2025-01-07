@@ -172,25 +172,25 @@
     </header>
 
     <!-- 2024 Gallery Title -->
-    <div class="gallery-title" onclick="openSlideshow('2024')">2024 Gallery</div>
+    <div class="gallery-title" id="open2024Gallery">2024 Gallery</div>
 
     <!-- Preview of smaller images for 2024 Gallery -->
     <div class="preview-container">
-        <img src="photos/ngv.jpg" alt="ngv" onclick="openSlideshow('2024')">
-        <img src="photos/casinolight.jpg" alt="Casino light" onclick="openSlideshow('2024')">
-        <img src="photos/river.jpg" alt="River" onclick="openSlideshow('2024')">
-        <img src="photos/train.jpg" alt="Train" onclick="openSlideshow('2024')">
-        <img src="photos/cityman.jpg" alt="City Man" onclick="openSlideshow('2024')">
+        <img src="photos/ngv.jpg" alt="ngv" class="previewImage" data-gallery="2024">
+        <img src="photos/casinolight.jpg" alt="Casino light" class="previewImage" data-gallery="2024">
+        <img src="photos/river.jpg" alt="River" class="previewImage" data-gallery="2024">
+        <img src="photos/train.jpg" alt="Train" class="previewImage" data-gallery="2024">
+        <img src="photos/cityman.jpg" alt="City Man" class="previewImage" data-gallery="2024">
     </div>
 
     <!-- Composites Title -->
-    <div class="composites-title" onclick="openSlideshow('composites')">Composites</div>
+    <div class="composites-title" id="openCompositesGallery">Composites</div>
 
     <!-- Preview of smaller images for Composites -->
     <div class="preview-container">
-        <img src="photos/water3.jpg" alt="Water Composite" onclick="openSlideshow('composites')">
-        <img src="photos/door.jpg" alt="Door Composite" onclick="openSlideshow('composites')">
-        <img src="photos/wavesplit.jpg" alt="Wave Split Composite" onclick="openSlideshow('composites')">
+        <img src="photos/water3.jpg" alt="Water Composite" class="previewImage" data-gallery="composites">
+        <img src="photos/door.jpg" alt="Door Composite" class="previewImage" data-gallery="composites">
+        <img src="photos/wavesplit.jpg" alt="Wave Split Composite" class="previewImage" data-gallery="composites">
     </div>
 
     <!-- Slideshow container for both 2024 Gallery and Composites -->
@@ -215,17 +215,29 @@
         <button class="arrow-btn next-btn" onclick="plusSlides(1)">&#10095;</button>
     </div>
 
-    <!-- Move script tag to the bottom to ensure elements are loaded -->
+    <!-- Script to handle event listeners -->
     <script>
-        let slideIndex = 0;
-        let currentGallery = ""; // Variable to track the current gallery (2024 or composites)
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize variables
+            let slideIndex = 0;
+            let currentGallery = ""; // Variable to track the current gallery (2024 or composites)
 
-        // Function to open the slideshow when clicking on Composites or 2024 Gallery
-        function openSlideshow(gallery) {
-            currentGallery = gallery; // Store the current gallery (either '2024' or 'composites')
-            slideIndex = 0; // Start from the first image
-            showSlides(gallery, slideIndex); // Show the first image for the selected gallery
-            document.getElementById("slideshowContainer").style.display
+            // Function to open the slideshow when clicking on Composites or 2024 Gallery
+            function openSlideshow(gallery) {
+                currentGallery = gallery; // Store the current gallery (either '2024' or 'composites')
+                slideIndex = 0; // Start from the first image
+                showSlides(gallery, slideIndex); // Show the first image for the selected gallery
+                document.getElementById("slideshowContainer").style.display = "flex"; // Show the slideshow container
+                document.body.style.overflow = "hidden"; // Disable page scroll
+            }
 
+            // Function to show slides for a given gallery
+            function showSlides(gallery, n) {
+                let slides = document.querySelectorAll(`img[data-gallery="${gallery}"]`);
+
+                // Loop through all slides and hide them
+                slides.forEach((slide) => slide.style.display = "none");
+
+                //
 
 
