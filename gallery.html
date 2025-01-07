@@ -9,11 +9,11 @@
             font-family: Source Code Pro, monospace;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #121212; /* Dark background */
+            color: white; /* White text */
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
         }
 
         header {
@@ -21,7 +21,7 @@
             display: flex;
             justify-content: center;
             padding: 20px 0;
-            background-color: #333;
+            background-color: #222;
             border-bottom: 2px solid #ddd;
         }
 
@@ -42,88 +42,76 @@
             text-decoration-color: lightblue;
         }
 
-        .composites-link, .gallery-link {
-            margin-top: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: black;
-            cursor: pointer;
+        .gallery {
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .composites-link:hover, .gallery-link:hover {
-            text-decoration: underline;
-            text-decoration-color: lightblue;
-        }
-
-        /* Gallery preview grid */
-        .gallery-previews {
+        .gallery .preview-images {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             justify-content: center;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
-        .previewImage {
-            width: 120px;
+        .gallery .preview-images img {
+            width: 100px;
             height: auto;
             cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Slideshow container */
-        #slideshowContainer {
-            display: none;
+        /* Fullscreen Image */
+        .slideshow {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            z-index: 100;
         }
 
-        .slideshow-content {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .slideshow img {
             max-width: 90%;
             max-height: 90%;
+            border-radius: 8px;
         }
 
-        .slideshow-content img {
-            width: 100%;
-            height: auto;
-            max-height: 80vh; /* Make images fit in the viewport */
-        }
-
-        .close-btn {
+        .slideshow .close-btn,
+        .slideshow .arrow-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 20px;
             color: white;
-            font-size: 2rem;
+            font-size: 40px;
+            background: none;
+            border: none;
             cursor: pointer;
-            z-index: 100;
+            z-index: 101;
         }
 
-        .arrow {
-            position: absolute;
+        .slideshow .close-btn {
+            right: 20px;
+        }
+
+        .slideshow .arrow-btn {
             top: 50%;
             transform: translateY(-50%);
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            z-index: 100;
+            font-size: 50px;
         }
 
-        .arrow-left {
-            left: 10px;
+        .slideshow .arrow-btn.left {
+            left: 20px;
         }
 
-        .arrow-right {
-            right: 10px;
+        .slideshow .arrow-btn.right {
+            right: 20px;
         }
     </style>
 </head>
@@ -133,100 +121,83 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="music.html">Music</a>
-            <a href="gallery.html" id="openGallery">Gallery</a>
+            <a href="gallery.html">Gallery</a>
             <a href="about.html">About</a>
         </nav>
     </header>
 
-    <div id="2024Gallery" class="gallery-link">
-        <span>2024 Gallery</span>
-    </div>
+    <div class="gallery">
+        <h2>2024 Gallery</h2>
+        <div class="preview-images">
+            <img src="photos/ngv.jpg" alt="ngv" onclick="openSlideshow(0)">
+            <img src="photos/casinolight.jpg" alt="Casino Light" onclick="openSlideshow(1)">
+            <img src="photos/river.jpg" alt="River" onclick="openSlideshow(2)">
+            <img src="photos/train.jpg" alt="Train" onclick="openSlideshow(3)">
+            <img src="photos/cityman.jpg" alt="City Man" onclick="openSlideshow(4)">
+            <img src="photos/casinopeople.jpg" alt="Casino People" onclick="openSlideshow(5)">
+            <img src="photos/i.jpg" alt="Photo i" onclick="openSlideshow(6)">
+        </div>
 
-    <div id="compositesGallery" class="gallery-link">
-        <span>Composites</span>
-    </div>
-
-    <div class="gallery-previews">
-        <!-- Preview of images for gallery -->
-        <img src="photos/ngv.jpg" class="previewImage" data-gallery="2024">
-        <img src="photos/casinolight.jpg" class="previewImage" data-gallery="2024">
-        <img src="photos/river.jpg" class="previewImage" data-gallery="2024">
-        <img src="photos/train.jpg" class="previewImage" data-gallery="2024">
-    </div>
-
-    <div class="gallery-previews">
-        <!-- Preview of images for composites -->
-        <img src="photos/water3.jpg" class="previewImage" data-gallery="composites">
-        <img src="photos/door.jpg" class="previewImage" data-gallery="composites">
-        <img src="photos/wavesplit.jpg" class="previewImage" data-gallery="composites">
-    </div>
-
-    <!-- Slideshow Container -->
-    <div id="slideshowContainer">
-        <div class="slideshow-content">
-            <img src="" alt="Slideshow Image" id="slideshowImage">
-            <span class="close-btn" onclick="closeSlideshow()">×</span>
-            <span class="arrow arrow-left" onclick="plusSlides(-1)">&#10094;</span>
-            <span class="arrow arrow-right" onclick="plusSlides(1)">&#10095;</span>
+        <h2>Composites</h2>
+        <div class="preview-images">
+            <img src="photos/water3.jpg" alt="Water Composite" onclick="openSlideshow(7)">
+            <img src="photos/door.jpg" alt="Door Composite" onclick="openSlideshow(8)">
+            <img src="photos/wavesplit.jpg" alt="Wave Split Composite" onclick="openSlideshow(9)">
         </div>
     </div>
 
+    <!-- Slideshow -->
+    <div class="slideshow" id="slideshow">
+        <button class="close-btn" onclick="closeSlideshow()">X</button>
+        <button class="arrow-btn left" onclick="navigateSlide(-1)">&#8592;</button>
+        <img id="slideshow-image" src="" alt="Slideshow Image">
+        <button class="arrow-btn right" onclick="navigateSlide(1)">&#8594;</button>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let slideIndex = 0;
-            let currentGallery = "";
+        // Array of all the images for the slideshow
+        const images = [
+            "photos/ngv.jpg",
+            "photos/casinolight.jpg",
+            "photos/river.jpg",
+            "photos/train.jpg",
+            "photos/cityman.jpg",
+            "photos/casinopeople.jpg",
+            "photos/i.jpg",
+            "photos/water3.jpg",
+            "photos/door.jpg",
+            "photos/wavesplit.jpg"
+        ];
 
-            // Function to open slideshow
-            function openSlideshow(gallery) {
-                console.log(`Opening ${gallery} slideshow`); // Log when opening slideshow
-                currentGallery = gallery; // Set the gallery
-                slideIndex = 0; // Start from the first image
-                showSlides(gallery, slideIndex); // Show the first image
-                document.getElementById("slideshowContainer").style.display = "flex"; // Show the slideshow container
-                document.body.style.overflow = "hidden"; // Disable scroll
+        let currentSlideIndex = -1;
+
+        // Function to open the slideshow with the selected image
+        function openSlideshow(index) {
+            currentSlideIndex = index;
+            const slideshow = document.getElementById('slideshow');
+            const slideshowImage = document.getElementById('slideshow-image');
+            slideshowImage.src = images[currentSlideIndex];
+            slideshow.style.display = 'flex';
+        }
+
+        // Function to close the slideshow
+        function closeSlideshow() {
+            document.getElementById('slideshow').style.display = 'none';
+        }
+
+        // Function to navigate between slides
+        function navigateSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex < 0) {
+                currentSlideIndex = images.length - 1; // Loop to the last image
+            } else if (currentSlideIndex >= images.length) {
+                currentSlideIndex = 0; // Loop to the first image
             }
-
-            // Function to show slides
-            function showSlides(gallery, n) {
-                console.log(`Showing slide for ${gallery}`); // Log when showing slide
-                let slides = document.querySelectorAll(`img[data-gallery="${gallery}"]`);
-                document.getElementById("slideshowImage").src = slides[slideIndex].src;
-            }
-
-            // Function for previous/next slides
-            function plusSlides(n) {
-                slideIndex += n;
-                let slides = document.querySelectorAll(`img[data-gallery="${currentGallery}"]`);
-                if (slideIndex >= slides.length) { slideIndex = 0; }
-                if (slideIndex < 0) { slideIndex = slides.length - 1; }
-                showSlides(currentGallery, slideIndex);
-            }
-
-            // Function to close slideshow
-            function closeSlideshow() {
-                document.getElementById("slideshowContainer").style.display = "none";
-                document.body.style.overflow = "auto"; // Re-enable page scroll
-            }
-
-            // Attach event listeners to gallery links
-            document.getElementById("2024Gallery").addEventListener("click", function() {
-                openSlideshow('2024');
-            });
-
-            document.getElementById("compositesGallery").addEventListener("click", function() {
-                openSlideshow('composites');
-            });
-
-            // Event listeners for preview images
-            const previewImages = document.querySelectorAll('.previewImage');
-            previewImages.forEach(function (img) {
-                img.addEventListener("click", function() {
-                    openSlideshow(img.dataset.gallery);
-                });
-            });
-        });
+            document.getElementById('slideshow-image').src = images[currentSlideIndex];
+        }
     </script>
 </body>
 </html>
+
 
 
