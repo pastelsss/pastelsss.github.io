@@ -120,14 +120,15 @@
 
     <header>
         <nav>
-            <!-- Use 'onclick' event to open the slideshow -->
-            <a href="javascript:void(0)" onclick="openGallery('2024')">2024 Gallery</a>
-            <a href="javascript:void(0)" onclick="openGallery('composites')">Composites</a>
+            <a href="index.html">Home</a>
+            <a href="music.html">Music</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
         </nav>
     </header>
 
     <div class="gallery">
-        <h2>Gallery Preview</h2>
+        <h2>2024 Gallery</h2>
         <div class="preview-images">
             <!-- Images for preview in the 2024 gallery -->
             <img src="photos/ngv.jpg" alt="ngv" onclick="openSlideshow(0, '2024')">
@@ -177,15 +178,9 @@
         let currentGallery = '2024'; // Default gallery
         let currentImageIndex = 0; // Default to the first image
 
-        // Open the gallery when clicking on 2024 Gallery or Composites
-        function openGallery(gallery) {
-            currentGallery = gallery;
-            currentImageIndex = 0; // Start with the first image
-            openSlideshow(currentImageIndex, gallery);
-        }
-
-        // Open slideshow with the selected image
+        // Open the slideshow when clicking on 2024 Gallery or Composites
         function openSlideshow(index, gallery) {
+            currentGallery = gallery;
             currentImageIndex = index;
             const image = galleryData[gallery][index];
             document.getElementById('slideshow-image').src = image;
