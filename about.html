@@ -9,7 +9,8 @@
             font-family: Source Code Pro, monospace;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #121212; /* Dark background */
+            color: white; /* White text */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -20,7 +21,7 @@
             display: flex;
             justify-content: center;
             padding: 20px 0;
-            background-color: #fff;
+            background-color: #222; /* Dark header */
             border-bottom: 2px solid #ddd;
         }
 
@@ -31,30 +32,15 @@
 
         nav a {
             text-decoration: none;
-            color: black; /* Black text for the links */
+            color: white; /* White text for links */
             font-size: 1.2rem;
             font-weight: bold;
+            cursor: pointer;
         }
 
         nav a:hover {
             text-decoration: underline;
-            text-decoration-color: lightblue; /* Light blue underline on hover */
-        }
-
-        .composites-link {
-            margin-top: 20px; /* Space between nav and composites link */
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .composites-link a {
-            text-decoration: none;
-            color: black; /* Black text for composites link */
-        }
-
-        .composites-link a:hover {
-            text-decoration: underline;
-            text-decoration-color: lightblue; /* Light blue underline on hover */
+            text-decoration-color: lightblue;
         }
 
         .about-content {
@@ -74,7 +60,7 @@
 
         .contact-info {
             font-size: 1.2rem;
-            color: black; /* Match link text color */
+            color: white; /* White text for contact info */
             font-weight: bold;
             text-align: center;
             margin-top: 20px;
