@@ -122,30 +122,32 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="music.html">Music</a>
-            <a href="gallery.html">Gallery</a>
+            <a href="gallery.html" onclick="openGallery('2024')">Gallery 2024</a>
             <a href="about.html">About</a>
         </nav>
     </header>
 
     <div class="gallery">
-        <h2>2024 Gallery</h2>
+        <!-- 2024 Gallery Link -->
+        <h2 onclick="openGallery('2024')">2024 Gallery</h2>
         <div class="preview-images">
-            <!-- Images for preview in the 2024 gallery -->
-            <img src="photos/ngv.jpg" alt="ngv" onclick="openSlideshow(0, '2024')">
-            <img src="photos/casinolight.jpg" alt="Casino Light" onclick="openSlideshow(1, '2024')">
-            <img src="photos/river.jpg" alt="River" onclick="openSlideshow(2, '2024')">
-            <img src="photos/train.jpg" alt="Train" onclick="openSlideshow(3, '2024')">
-            <img src="photos/cityman.jpg" alt="City Man" onclick="openSlideshow(4, '2024')">
-            <img src="photos/casinopeople.jpg" alt="Casino People" onclick="openSlideshow(5, '2024')">
-            <img src="photos/i.jpg" alt="Photo i" onclick="openSlideshow(6, '2024')">
+            <!-- Preview Images for 2024 Gallery -->
+            <img src="photos/ngv.jpg" alt="ngv">
+            <img src="photos/casinolight.jpg" alt="Casino Light">
+            <img src="photos/river.jpg" alt="River">
+            <img src="photos/train.jpg" alt="Train">
+            <img src="photos/cityman.jpg" alt="City Man">
+            <img src="photos/casinopeople.jpg" alt="Casino People">
+            <img src="photos/i.jpg" alt="Photo i">
         </div>
 
-        <h2>Composites</h2>
+        <!-- Composites Link -->
+        <h2 onclick="openGallery('composites')">Composites</h2>
         <div class="preview-images">
-            <!-- Images for preview in the composites section -->
-            <img src="photos/water3.jpg" alt="Water Composite" onclick="openSlideshow(0, 'composites')">
-            <img src="photos/door.jpg" alt="Door Composite" onclick="openSlideshow(1, 'composites')">
-            <img src="photos/wavesplit.jpg" alt="Wave Split Composite" onclick="openSlideshow(2, 'composites')">
+            <!-- Preview Images for Composites -->
+            <img src="photos/water3.jpg" alt="Water Composite">
+            <img src="photos/door.jpg" alt="Door Composite">
+            <img src="photos/wavesplit.jpg" alt="Wave Split Composite">
         </div>
     </div>
 
@@ -178,11 +180,11 @@
         let currentGallery = '2024'; // Default gallery
         let currentImageIndex = 0; // Default to the first image
 
-        // Open the slideshow when clicking on 2024 Gallery or Composites
-        function openSlideshow(index, gallery) {
+        // Function to open the slideshow and set the first image based on gallery
+        function openGallery(gallery) {
             currentGallery = gallery;
-            currentImageIndex = index;
-            const image = galleryData[gallery][index];
+            currentImageIndex = 0; // Start from the first image of the selected gallery
+            const image = galleryData[gallery][currentImageIndex];
             document.getElementById('slideshow-image').src = image;
             document.getElementById('slideshow').style.display = 'flex';
         }
