@@ -9,7 +9,8 @@
             font-family: Source Code Pro, monospace;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #121212; /* Dark background */
+            color: white; /* White text */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -20,7 +21,7 @@
             display: flex;
             justify-content: center;
             padding: 20px 0;
-            background-color: #fff;
+            background-color: #222; /* Dark header */
             border-bottom: 2px solid #ddd;
         }
 
@@ -31,14 +32,15 @@
 
         nav a {
             text-decoration: none;
-            color: black; /* Black text for the links */
+            color: white; /* White text for links */
             font-size: 1.2rem;
             font-weight: bold;
+            cursor: pointer;
         }
 
         nav a:hover {
             text-decoration: underline;
-            text-decoration-color: lightblue; /* Light blue underline on hover */
+            text-decoration-color: lightblue;
         }
 
         .music-content {
@@ -51,7 +53,13 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #333;
+            color: white; /* White text for music title */
+        }
+
+        audio {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 500px; /* Limit audio width */
         }
     </style>
 </head>
