@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
+    <title>Music</title>
     <style>
-        /* General body styles */
         body {
             font-family: Source Code Pro, monospace;
             margin: 0;
@@ -15,20 +14,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
-        /* Header section styles */
         header {
             width: 100%;
             display: flex;
             justify-content: center;
             padding: 20px 0;
-            background-color: #222;
+            background-color: #222; /* Dark header */
             border-bottom: 2px solid #ddd;
         }
 
-        /* Navigation menu styles */
         nav {
             display: flex;
             gap: 20px;
@@ -36,7 +32,7 @@
 
         nav a {
             text-decoration: none;
-            color: white;
+            color: white; /* White text for links */
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
@@ -47,116 +43,28 @@
             text-decoration-color: lightblue;
         }
 
-        /* Content wrapper for the gallery */
-        .gallery-content {
+        .music-content {
             padding: 20px;
             text-align: center;
             width: 100%;
         }
 
-        /* Section for gallery links */
-        .gallery-preview {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
+        .music-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: white; /* White text for music title */
         }
 
-        .gallery-preview div {
-            width: 120px; /* Small thumbnail size */
-            height: 120px;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        .gallery-preview img {
+        audio {
+            margin-top: 20px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Slideshow styles */
-        .slideshow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-            display: none; /* Hidden by default */
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            overflow: hidden;
-        }
-
-        .slideshow img {
-            max-width: 100%;
-            max-height: 90%; /* Make sure it fits inside the screen */
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
-        /* Arrow and close button styles */
-        .slideshow .arrow,
-        .slideshow .close-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 2;
-        }
-
-        .slideshow .arrow.left {
-            left: 10px;
-        }
-
-        .slideshow .arrow.right {
-            right: 10px;
-        }
-
-        .slideshow .close-btn {
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 0, 0, 0.6); /* Red close button */
-            font-size: 2rem;
-            padding: 10px;
-            border-radius: 50%;
-        }
-
-        /* Responsive design for small screens */
-        @media (max-width: 767px) {
-            nav a {
-                font-size: 1rem;
-            }
-
-            .gallery-preview div {
-                width: 80px;
-                height: 80px;
-            }
-
-            .gallery-preview {
-                flex-direction: column;
-            }
-
-            .slideshow img {
-                max-width: 95%; /* Allow for better image fitting on small screens */
-                max-height: 80%;
-            }
+            max-width: 500px; /* Limit audio width */
         }
     </style>
 </head>
 <body>
 
-    <!-- Header with Navigation -->
     <header>
         <nav>
             <a href="index.html">Home</a>
@@ -166,83 +74,15 @@
         </nav>
     </header>
 
-    <!-- Main Gallery Content -->
-    <div class="gallery-content">
-        <h2>Gallery</h2>
-        <div class="gallery-preview">
-            <!-- 2024 Gallery Preview Thumbnails -->
-            <div onclick="openSlideshow('2024')">
-                <img src="photos/ngv.jpg" alt="NGV Preview">
-            </div>
-            <!-- Composites Preview Thumbnails -->
-            <div onclick="openSlideshow('composites')">
-                <img src="photos/water3.jpg" alt="Composites Preview">
-            </div>
-        </div>
+    <div class="music-content">
+        <h1 class="music-title">e.m.i.s</h1>
+        <audio controls>
+            <source src="audio/untitledtrack1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
-
-    <!-- Slideshow Modal -->
-    <div class="slideshow" id="slideshow">
-        <span class="arrow left" onclick="navigateSlideshow(-1)">&#10094;</span>
-        <span class="arrow right" onclick="navigateSlideshow(1)">&#10095;</span>
-        <span class="close-btn" onclick="closeSlideshow()">&#10006;</span>
-        <img id="slideshowImage" src="" alt="Slideshow Image">
-    </div>
-
-    <script>
-        const images = {
-            '2024': [
-                'photos/ngv.jpg',
-                'photos/casinolight.jpg',
-                'photos/river.jpg',
-                'photos/train.jpg',
-                'photos/cityman.jpg',
-                'photos/casinopeople.jpg',
-                'photos/i.jpg'
-            ],
-            'composites': [
-                'photos/water3.jpg',
-                'photos/door.jpg',
-                'photos/wavesplit.jpg'
-            ]
-        };
-
-        let currentImageIndex = 0;
-        let currentGallery = '';
-
-        // Open slideshow for the selected gallery
-        function openSlideshow(gallery) {
-            currentGallery = gallery;
-            currentImageIndex = 0; // Start from the first image in the selected gallery
-            showImage();
-            document.getElementById('slideshow').style.display = 'flex';
-        }
-
-        // Close the slideshow
-        function closeSlideshow() {
-            document.getElementById('slideshow').style.display = 'none';
-        }
-
-        // Navigate to the next/previous image
-        function navigateSlideshow(direction) {
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) {
-                currentImageIndex = images[currentGallery].length - 1;
-            } else if (currentImageIndex >= images[currentGallery].length) {
-                currentImageIndex = 0;
-            }
-            showImage();
-        }
-
-        // Show the current image in the slideshow
-        function showImage() {
-            const imgElement = document.getElementById('slideshowImage');
-            imgElement.src = images[currentGallery][currentImageIndex];
-        }
-    </script>
 
 </body>
 </html>
-
 
 
