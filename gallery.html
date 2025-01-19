@@ -122,29 +122,32 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="music.html">Music</a>
-            <a href="gallery.html" onclick="openGallery('2024')">Gallery</a> <!-- Updated to just 'Gallery' -->
+            <a href="gallery.html">Gallery</a>
             <a href="about.html">About</a>
         </nav>
     </header>
 
     <div class="gallery">
-        <!-- 2024 Gallery Link -->
+        <!-- 2024 Gallery -->
         <h2 onclick="openGallery('2024')">2024 Gallery</h2>
         <div class="preview-images">
-            <!-- Preview Images for 2024 Gallery -->
-            <img src="photos/ngv.jpg" alt="ngv">
             <img src="photos/casinolight.jpg" alt="Casino Light">
-            <img src="photos/river.jpg" alt="River">
-            <img src="photos/train.jpg" alt="Train">
-            <img src="photos/cityman.jpg" alt="City Man">
             <img src="photos/casinopeople.jpg" alt="Casino People">
             <img src="photos/i.jpg" alt="Photo i">
         </div>
 
-        <!-- Composites Link -->
+        <!-- Gallery XA -->
+        <h2 onclick="openGallery('xa')">Gallery XA</h2>
+        <div class="preview-images">
+            <img src="photos/ngv.jpg" alt="NGV">
+            <img src="photos/river.jpg" alt="River">
+            <img src="photos/cityman.jpg" alt="City Man">
+            <img src="photos/train.jpg" alt="Train">
+        </div>
+
+        <!-- Composites -->
         <h2 onclick="openGallery('composites')">Composites</h2>
         <div class="preview-images">
-            <!-- Preview Images for Composites -->
             <img src="photos/water3.jpg" alt="Water Composite">
             <img src="photos/door.jpg" alt="Door Composite">
             <img src="photos/wavesplit.jpg" alt="Wave Split Composite">
@@ -162,13 +165,15 @@
     <script>
         const galleryData = {
             '2024': [
-                'photos/ngv.jpg',
                 'photos/casinolight.jpg',
-                'photos/river.jpg',
-                'photos/train.jpg',
-                'photos/cityman.jpg',
                 'photos/casinopeople.jpg',
                 'photos/i.jpg',
+            ],
+            'xa': [
+                'photos/ngv.jpg',
+                'photos/river.jpg',
+                'photos/cityman.jpg',
+                'photos/train.jpg',
             ],
             'composites': [
                 'photos/water3.jpg',
