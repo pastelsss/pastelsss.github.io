@@ -1,218 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-    <style>
-        body {
-            font-family: Source Code Pro, monospace;
-            margin: 0;
-            padding: 0;
-            background-color: #121212; /* Dark background */
-            color: white; /* White text */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery</title>
+  <style>
+      body {
+          font-family: Source Code Pro, monospace;
+          margin: 0;
+          padding: 0;
+          /* Changed background to white and text to black */
+          background-color: #ffffff;
+          color: black;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
 
-        header {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
-            background-color: #222;
-            border-bottom: 2px solid #ddd;
-        }
+      header {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          padding: 20px 0;
+          /* Changed header to white background */
+          background-color: #fff;
+          border-bottom: 2px solid #ddd;
+      }
 
-        nav {
-            display: flex;
-            gap: 20px;
-        }
+      nav {
+          display: flex;
+          gap: 20px;
+      }
 
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
+      nav a {
+          text-decoration: none;
+          /* Changed link color to black */
+          color: black;
+          font-size: 1.2rem;
+          font-weight: bold;
+          cursor: pointer;
+      }
 
-        nav a:hover {
-            text-decoration: underline;
-            text-decoration-color: lightblue;
-        }
+      nav a:hover {
+          text-decoration: underline;
+          text-decoration-color: lightblue;
+      }
 
-        .gallery {
-            padding: 20px;
-            text-align: center;
-            width: 100%;
-            box-sizing: border-box;
-        }
+      .gallery {
+          padding: 20px;
+          /* Remove center text alignment so headings are left-aligned */
+          width: 100%;
+          box-sizing: border-box;
+      }
 
-        .gallery .preview-images {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
+      .gallery h2 {
+          /* Left-align the headings */
+          text-align: left;
+          margin-left: 20px; /* Indent to align with the first photo */
+          margin-bottom: 0;
+          cursor: pointer;
+      }
 
-        .gallery .preview-images img {
-            width: 100px;
-            height: auto;
-            cursor: pointer;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
+      .preview-images {
+          display: flex;
+          gap: 15px;
+          margin-top: 10px;
+          /* Align photos to the left but keep the container centered */
+          margin-left: 20px; 
+      }
 
-        /* Fullscreen Image */
-        .slideshow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
+      .preview-images img {
+          width: 100px;
+          height: auto;
+          cursor: pointer;
+          border-radius: 8px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
 
-        .slideshow img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-        }
+      /* Fullscreen Image */
+      .slideshow {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.9);
+          display: none;
+          justify-content: center;
+          align-items: center;
+          z-index: 100;
+      }
 
-        .slideshow .close-btn,
-        .slideshow .arrow-btn {
-            position: absolute;
-            top: 20px;
-            color: white;
-            font-size: 40px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 101;
-        }
+      .slideshow img {
+          max-width: 90%;
+          max-height: 90%;
+          border-radius: 8px;
+      }
 
-        .slideshow .close-btn {
-            right: 20px;
-        }
+      .slideshow .close-btn,
+      .slideshow .arrow-btn {
+          position: absolute;
+          top: 20px;
+          color: white;
+          font-size: 40px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          z-index: 101;
+      }
 
-        .slideshow .arrow-btn {
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 50px;
-        }
+      .slideshow .close-btn {
+          right: 20px;
+      }
 
-        .slideshow .arrow-btn.left {
-            left: 20px;
-        }
+      .slideshow .arrow-btn {
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 50px;
+      }
 
-        .slideshow .arrow-btn.right {
-            right: 20px;
-        }
-    </style>
+      .slideshow .arrow-btn.left {
+          left: 20px;
+      }
+
+      .slideshow .arrow-btn.right {
+          right: 20px;
+      }
+  </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="music.html">Music</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="about.html">About</a>
-        </nav>
-    </header>
+<header>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="music.html">Music</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+  </nav>
+</header>
 
-    <div class="gallery">
-        <!-- 2024 Gallery -->
-        <h2 onclick="openGallery('2024')">2024 Gallery</h2>
-        <div class="preview-images">
-            <img src="photos/casinolight.jpg" alt="Casino Light">
-            <img src="photos/casinopeople.jpg" alt="Casino People">
-            <img src="photos/i.jpg" alt="Photo i">
-            <img src="photos/poollight.jpg" alt= "Photo pool light">
-        </div>
-
-        <!-- Gallery XA -->
-        <h2 onclick="openGallery('xa')">Gallery XA</h2>
-        <div class="preview-images">
-            <img src="photos/ngv.jpg" alt="NGV">
-            <img src="photos/river.jpg" alt="River">
-            <img src="photos/cityman.jpg" alt="City Man">
-            <img src="photos/train.jpg" alt="Train">
-        </div>
-
-        <!-- Composites -->
-        <h2 onclick="openGallery('composites')">Composites</h2>
-        <div class="preview-images">
-            <img src="photos/water3.jpg" alt="Water Composite">
-            <img src="photos/door.jpg" alt="Door Composite">
-            <img src="photos/wavesplit.jpg" alt="Wave Split Composite">
-            <img src="photos/fadecomp.jpg" alt="bali pool">
-        </div>
+<div class="gallery">
+    <!-- 2024 Gallery -->
+    <h2 onclick="openGallery('2024')">2024 Gallery</h2>
+    <div class="preview-images">
+        <img src="photos/casinolight.jpg" alt="Casino Light">
+        <img src="photos/casinopeople.jpg" alt="Casino People">
+        <img src="photos/i.jpg" alt="Photo i">
+        <img src="photos/poollight.jpg" alt="Photo pool light">
     </div>
 
-    <!-- Slideshow Modal -->
-    <div class="slideshow" id="slideshow">
-        <button class="close-btn" onclick="closeSlideshow()">X</button>
-        <button class="arrow-btn left" onclick="changeImage(-1)">&#10094;</button>
-        <img id="slideshow-image" src="" alt="Slideshow Image">
-        <button class="arrow-btn right" onclick="changeImage(1)">&#10095;</button>
+    <!-- Gallery XA -->
+    <h2 onclick="openGallery('xa')">Gallery XA</h2>
+    <div class="preview-images">
+        <img src="photos/ngv.jpg" alt="NGV">
+        <img src="photos/river.jpg" alt="River">
+        <img src="photos/cityman.jpg" alt="City Man">
+        <img src="photos/train.jpg" alt="Train">
     </div>
 
-    <script>
-        const galleryData = {
-            '2024': [
-                'photos/casinolight.jpg',
-                'photos/casinopeople.jpg',
-                'photos/i.jpg',
-                'photos/poollight.jpg',
-            ],
-            'xa': [
-                'photos/ngv.jpg',
-                'photos/river.jpg',
-                'photos/cityman.jpg',
-                'photos/train.jpg',
-            ],
-            'composites': [
-                'photos/water3.jpg',
-                'photos/door.jpg',
-                'photos/wavesplit.jpg',
-                'photos/fadecomp.jpg',
-            ]
-        };
+    <!-- Composites -->
+    <h2 onclick="openGallery('composites')">Composites</h2>
+    <div class="preview-images">
+        <img src="photos/water3.jpg" alt="Water Composite">
+        <img src="photos/door.jpg" alt="Door Composite">
+        <img src="photos/wavesplit.jpg" alt="Wave Split Composite">
+        <img src="photos/fadecomp.jpg" alt="bali pool">
+    </div>
+</div>
 
-        let currentGallery = '2024'; // Default gallery
-        let currentImageIndex = 0; // Default to the first image
+<!-- Slideshow Modal -->
+<div class="slideshow" id="slideshow">
+    <button class="close-btn" onclick="closeSlideshow()">X</button>
+    <button class="arrow-btn left" onclick="changeImage(-1)">&#10094;</button>
+    <img id="slideshow-image" src="" alt="Slideshow Image">
+    <button class="arrow-btn right" onclick="changeImage(1)">&#10095;</button>
+</div>
 
-        // Function to open the slideshow and set the first image based on gallery
-        function openGallery(gallery) {
-            currentGallery = gallery;
-            currentImageIndex = 0; // Start from the first image of the selected gallery
-            const image = galleryData[gallery][currentImageIndex];
-            document.getElementById('slideshow-image').src = image;
-            document.getElementById('slideshow').style.display = 'flex';
-        }
+<script>
+  const galleryData = {
+      '2024': [
+          'photos/casinolight.jpg',
+          'photos/casinopeople.jpg',
+          'photos/i.jpg',
+          'photos/poollight.jpg',
+      ],
+      'xa': [
+          'photos/ngv.jpg',
+          'photos/river.jpg',
+          'photos/cityman.jpg',
+          'photos/train.jpg',
+      ],
+      'composites': [
+          'photos/water3.jpg',
+          'photos/door.jpg',
+          'photos/wavesplit.jpg',
+          'photos/fadecomp.jpg',
+      ]
+  };
 
-        // Close the slideshow
-        function closeSlideshow() {
-            document.getElementById('slideshow').style.display = 'none';
-        }
+  let currentGallery = '2024'; // Default gallery
+  let currentImageIndex = 0; // Default to the first image
 
-        // Change the image in the slideshow
-        function changeImage(direction) {
-            currentImageIndex += direction;
-            const totalImages = galleryData[currentGallery].length;
-            if (currentImageIndex < 0) currentImageIndex = totalImages - 1;
-            if (currentImageIndex >= totalImages) currentImageIndex = 0;
-            const image = galleryData[currentGallery][currentImageIndex];
-            document.getElementById('slideshow-image').src = image;
-        }
-    </script>
+  // Function to open the slideshow and set the first image based on gallery
+  function openGallery(gallery) {
+      currentGallery = gallery;
+      currentImageIndex = 0; // Start from the first image of the selected gallery
+      const image = galleryData[gallery][currentImageIndex];
+      document.getElementById('slideshow-image').src = image;
+      document.getElementById('slideshow').style.display = 'flex';
+  }
+
+  // Close the slideshow
+  function closeSlideshow() {
+      document.getElementById('slideshow').style.display = 'none';
+  }
+
+  // Change the image in the slideshow
+  function changeImage(direction) {
+      currentImageIndex += direction;
+      const totalImages = galleryData[currentGallery].length;
+      if (currentImageIndex < 0) currentImageIndex = totalImages - 1;
+      if (currentImageIndex >= totalImages) currentImageIndex = 0;
+      const image = galleryData[currentGallery][currentImageIndex];
+      document.getElementById('slideshow-image').src = image;
+  }
+</script>
 
 </body>
-</html> 
+</html>
