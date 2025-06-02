@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Gallery</title>
   <style>
       body {
           font-family: Source Code Pro, monospace;
           margin: 0;
           padding: 0;
-          background-color: #ffffff; /* White background */
-          color: black;             /* Black text */
+          background-color: #ffffff;
+          color: black;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -49,7 +49,6 @@
           box-sizing: border-box;
       }
 
-      /* Center each gallery heading and the images below it */
       .gallery h2 {
           text-align: center;
           margin-bottom: 0;
@@ -59,8 +58,9 @@
       .preview-images {
           display: flex;
           gap: 15px;
-          justify-content: center; /* Center the image previews */
+          justify-content: center;
           margin-top: 10px;
+          flex-wrap: wrap;
       }
 
       .preview-images img {
@@ -71,7 +71,6 @@
           box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
       }
 
-      /* Fullscreen Image */
       .slideshow {
           position: fixed;
           top: 0;
@@ -83,11 +82,16 @@
           justify-content: center;
           align-items: center;
           z-index: 100;
+          overflow: hidden;
+          touch-action: none;
       }
 
       .slideshow img {
-          max-width: 90%;
-          max-height: 90%;
+          max-width: 100vw;
+          max-height: 100vh;
+          width: auto;
+          height: auto;
+          object-fit: contain;
           border-radius: 8px;
       }
 
@@ -151,7 +155,6 @@
         <img src="photos/river.jpg" alt="River">
         <img src="photos/cityman.jpg" alt="City Man">
         <img src="photos/train.jpg" alt="Train">
-        <!-- New image: flyingfish.JPG -->
         <img src="photos/flyingfish.jpg" alt="Flying Fish">
     </div>
 
@@ -187,7 +190,6 @@
           'photos/river.jpg',
           'photos/cityman.jpg',
           'photos/train.jpg',
-          // Added flyingfish.JPG to the XA array
           'photos/flyingfish.jpg',
       ],
       'composites': [
@@ -198,24 +200,21 @@
       ]
   };
 
-  let currentGallery = '2024'; // Default gallery
-  let currentImageIndex = 0; // Default to the first image
+  let currentGallery = '2024';
+  let currentImageIndex = 0;
 
-  // Function to open the slideshow and set the first image based on gallery
   function openGallery(gallery) {
       currentGallery = gallery;
-      currentImageIndex = 0; // Start from the first image of the selected gallery
+      currentImageIndex = 0;
       const image = galleryData[gallery][currentImageIndex];
       document.getElementById('slideshow-image').src = image;
       document.getElementById('slideshow').style.display = 'flex';
   }
 
-  // Close the slideshow
   function closeSlideshow() {
       document.getElementById('slideshow').style.display = 'none';
   }
 
-  // Change the image in the slideshow
   function changeImage(direction) {
       currentImageIndex += direction;
       const totalImages = galleryData[currentGallery].length;
@@ -228,3 +227,4 @@
 
 </body>
 </html>
+
