@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery</title>
   <style>
       body {
@@ -60,7 +60,6 @@
           gap: 15px;
           justify-content: center;
           margin-top: 10px;
-          flex-wrap: wrap;
       }
 
       .preview-images img {
@@ -82,16 +81,11 @@
           justify-content: center;
           align-items: center;
           z-index: 100;
-          overflow: hidden;
-          touch-action: none;
       }
 
       .slideshow img {
-          max-width: 100vw;
-          max-height: 100vh;
-          width: auto;
-          height: auto;
-          object-fit: contain;
+          max-width: 90%;
+          max-height: 90%;
           border-radius: 8px;
       }
 
@@ -124,6 +118,12 @@
       .slideshow .arrow-btn.right {
           right: 20px;
       }
+
+      @media (max-width: 768px) {
+          .arrow-btn {
+              display: none;
+          }
+      }
   </style>
 </head>
 <body>
@@ -138,7 +138,6 @@
 </header>
 
 <div class="gallery">
-    <!-- 2024 Gallery -->
     <h2 onclick="openGallery('2024')">2024 Gallery</h2>
     <div class="preview-images">
         <img src="photos/casinolight.jpg" alt="Casino Light">
@@ -148,7 +147,6 @@
         <img src="photos/jellyfish.jpg" alt="jellyfish">
     </div>
 
-    <!-- Gallery XA -->
     <h2 onclick="openGallery('xa')">Gallery XA</h2>
     <div class="preview-images">
         <img src="photos/ngv.jpg" alt="NGV">
@@ -158,7 +156,6 @@
         <img src="photos/flyingfish.jpg" alt="Flying Fish">
     </div>
 
-    <!-- Composites -->
     <h2 onclick="openGallery('composites')">Composites</h2>
     <div class="preview-images">
         <img src="photos/water3.jpg" alt="Water Composite">
@@ -168,7 +165,6 @@
     </div>
 </div>
 
-<!-- Slideshow Modal -->
 <div class="slideshow" id="slideshow">
     <button class="close-btn" onclick="closeSlideshow()">X</button>
     <button class="arrow-btn left" onclick="changeImage(-1)">&#10094;</button>
@@ -206,8 +202,7 @@
   function openGallery(gallery) {
       currentGallery = gallery;
       currentImageIndex = 0;
-      const image = galleryData[gallery][currentImageIndex];
-      document.getElementById('slideshow-image').src = image;
+      updateSlideshowImage();
       document.getElementById('slideshow').style.display = 'flex';
   }
 
@@ -216,12 +211,38 @@
   }
 
   function changeImage(direction) {
-      currentImageIndex += direction;
-      const totalImages = galleryData[currentGallery].length;
-      if (currentImageIndex < 0) currentImageIndex = totalImages - 1;
-      if (currentImageIndex >= totalImages) currentImageIndex = 0;
+      const total = galleryData[currentGallery].length;
+      currentImageIndex = (currentImageIndex + direction + total) % total;
+      updateSlideshowImage();
+  }
+
+  function updateSlideshowImage() {
       const image = galleryData[currentGallery][currentImageIndex];
       document.getElementById('slideshow-image').src = image;
+  }
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const slideshow = document.getElementById('slideshow');
+
+  slideshow.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+  });
+
+  slideshow.addEventListener('touchend', function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+  });
+
+  function handleSwipe() {
+      const swipeDistance = touchEndX - touchStartX;
+      if (Math.abs(swipeDistance) > 50) {
+          if (swipeDistance < 0) {
+              changeImage(1);
+          } else {
+              changeImage(-1);
+          }
+      }
   }
 </script>
 
