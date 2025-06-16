@@ -1,85 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pastels</title>
-    <style>
-        body {
-            font-family: Source Code Pro, sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background-image: url('photos/oceandoor.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pastels</title>
+  <style>
+    body {
+      font-family: Source Code Pro, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url('photos/oceandoor.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        header {
-            background-color: rgba(255, 255, 255, 0.0); /* Transparent */
-            color: black;
-            padding: 10px 0;
-            text-align: center;
-        }
+    @media (min-width: 768px) {
+      body {
+        background-size: contain;
+      }
+    }
 
-        main {
-            padding: 20px;
-            margin-top: 60px; /* move closer to top */
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    header {
+      background-color: rgba(255, 255, 255, 0.7);
+      color: black;
+      padding: 10px 0;
+      text-align: center;
+    }
 
-        .randomize {
-            position: relative;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
+    main {
+      padding: 40px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
 
-        .randomize:nth-child(odd) {
-            margin-left: -30px;
-        }
+    .randomize {
+      position: relative;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
 
-        .randomize:nth-child(even) {
-            margin-left: 30px;
-        }
+    .randomize:nth-child(odd) {
+      margin-left: -30px;
+    }
 
-        a {
-            text-decoration: none;
-            color: #90c8ff;
-        }
+    .randomize:nth-child(even) {
+      margin-left: 30px;
+    }
 
-        a:hover {
-            text-decoration: underline;
-            text-decoration-color: lightblue;
-        }
-    </style>
+    a {
+      text-decoration: none;
+      color: #90c8ff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <!-- intentionally blank -->
-    </header>
+  <header>
+    <!-- Header is intentionally empty -->
+  </header>
 
-    <main>
-        <p class="randomize">pastels.</p>
-        <p class="randomize">gallery//below:</p>
-        <a href="gallery.html" class="randomize">Gallery</a>
-        <p class="randomize">music below:</p>
-        <a href="music.html" class="randomize">Music</a>
-        <a href="about.html" class="randomize">About</a>
-    </main>
+  <main>
+    <p class="randomize">pastels.</p>
+    <p class="randomize">gallery//below:</p>
+    <a href="gallery.html" class="randomize">Gallery</a>
+    <p class="randomize">music below:</p>
+    <a href="music.html" class="randomize">Music</a>
+    <a href="about.html" class="randomize">About</a>
+  </main>
 
 </body>
 </html>
-
-
-
-
