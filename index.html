@@ -28,10 +28,11 @@
 
     .text-block {
       position: absolute;
-      left: 200px;
+      left: 50%;
+      transform: translateX(-50%); /* This centers it horizontally */
       opacity: 0;
       animation: slideFadeIn 1.2s forwards;
-      text-align: left;
+      text-align: center;
     }
 
     .pastels {
@@ -77,11 +78,11 @@
     @keyframes slideFadeIn {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translate(-50%, 20px);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(-50%);
       }
     }
   </style>
@@ -95,6 +96,3 @@
 
 </body>
 </html>
-
-
-
