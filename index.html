@@ -16,11 +16,8 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
       animation: fadeIn 2s ease;
+      position: relative;
     }
 
     @media (min-width: 768px) {
@@ -31,11 +28,10 @@
 
     .text-block {
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: left;
+      left: 40px;
       opacity: 0;
       animation: slideFadeIn 1.2s forwards;
+      text-align: left;
     }
 
     .pastels {
@@ -45,19 +41,19 @@
     }
 
     .gallery {
-      top: 100px;
+      top: 90px;
       font-size: 18px;
       animation-delay: 0.4s;
     }
 
     .music {
-      top: 130px;
+      top: 140px;
       font-size: 18px;
       animation-delay: 0.6s;
     }
 
     .about {
-      bottom: 150px;
+      bottom: 190px;
       font-size: 18px;
       animation-delay: 1s;
     }
@@ -81,11 +77,11 @@
     @keyframes slideFadeIn {
       from {
         opacity: 0;
-        transform: translate(-50%, 20px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
-        transform: translateX(-50%);
+        transform: translateY(0);
       }
     }
   </style>
@@ -99,5 +95,6 @@
 
 </body>
 </html>
+
 
 
