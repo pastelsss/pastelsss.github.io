@@ -19,6 +19,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
     @media (min-width: 768px) {
@@ -27,34 +28,30 @@
       }
     }
 
-    main {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      padding: 40px 30px;
-      position: relative;
-    }
-
-    .randomize {
-      font-size: 20px;
-      margin: 10px 0;
-    }
-
-    .offset-1 {
-      margin-left: 20px;
-    }
-
-    .offset-2 {
-      margin-left: 60px;
-    }
-
-    .about-link {
+    .text-block {
       position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .pastels {
+      top: 40px;
+      font-size: 20px;
+    }
+
+    .gallery {
+      top: 90px;
+      font-size: 18px;
+    }
+
+    .music {
+      top: 140px;
+      font-size: 18px;
+    }
+
+    .about {
       bottom: 30px;
-      right: 30px;
       font-size: 18px;
     }
 
@@ -70,13 +67,12 @@
 </head>
 <body>
 
-  <main>
-    <p class="randomize">pastels.</p>
-    <a href="gallery.html" class="randomize offset-1">Gallery</a>
-    <a href="music.html" class="randomize offset-2">Music</a>
-    <a href="about.html" class="about-link">About</a>
-  </main>
+  <p class="text-block pastels">pastels.</p>
+  <a href="gallery.html" class="text-block gallery">Gallery</a>
+  <a href="music.html" class="text-block music">Music</a>
+  <a href="about.html" class="text-block about">About</a>
 
 </body>
 </html>
+
 
