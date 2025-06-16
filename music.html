@@ -76,30 +76,81 @@
             text-decoration: underline;
             text-decoration-color: lightblue;
         }
-    </style>
-</head>
-<body>
+   <style>
+    body {
+        font-family: Source Code Pro, monospace;
+        margin: 0;
+        padding: 0;
+        background-image: url('photos/waterfall.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-<header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="music.html">Music</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="about.html">About</a>
-    </nav>
-</header>
+    header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent */
+        border-bottom: 2px solid #ddd;
+    }
 
-<div class="music-content">
-    <h1 class="music-title">e.m.i.s</h1>
-    <audio controls>
-        <source src="audio/untitledtrack1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    nav {
+        display: flex;
+        gap: 20px;
+    }
 
-    <div class="soundcloud-link">
-        Or listen on <a href="https://on.soundcloud.com/ifGczyV0h2dNHMoCY9" target="_blank">SoundCloud</a>.
-    </div>
-</div>
+    nav a {
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-</body>
-</html>
+    nav a:hover {
+        text-decoration: underline;
+        text-decoration-color: lightblue;
+    }
+
+    .music-content {
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .music-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    audio {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .soundcloud-link {
+        margin-top: 30px;
+        font-size: 1rem;
+    }
+
+    .soundcloud-link a {
+        color: #90c8ff;
+        text-decoration: none;
+    }
+
+    .soundcloud-link a:hover {
+        text-decoration: underline;
+        text-decoration-color: lightblue;
+    }
+</style>
+
