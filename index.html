@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Pastels</title>
     <style>
         body {
             font-family: Source Code Pro, sans-serif;
             margin: 0;
             padding: 0;
             height: 100vh;
+            background-image: url('photos/oceandoor.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            overflow: hidden;
+            align-items: center;
         }
 
         header {
-            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+            background-color: rgba(255, 255, 255, 0.0); /* Transparent */
             color: black;
             padding: 10px 0;
             text-align: center;
@@ -26,46 +30,45 @@
 
         main {
             padding: 20px;
+            margin-top: 60px; /* move closer to top */
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Randomize the positioning of other elements */
         .randomize {
             position: relative;
             font-size: 18px;
             margin-bottom: 20px;
         }
 
-        /* Randomized slight positioning */
         .randomize:nth-child(odd) {
-            margin-left: -30px; /* Move a bit to the left */
+            margin-left: -30px;
         }
 
         .randomize:nth-child(even) {
-            margin-left: 30px; /* Move a bit to the right */
+            margin-left: 30px;
         }
 
         a {
             text-decoration: none;
-            color: #007BFF;
+            color: #90c8ff;
         }
 
         a:hover {
             text-decoration: underline;
+            text-decoration-color: lightblue;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- The "pastelsss" header is removed, nothing else added -->
+        <!-- intentionally blank -->
     </header>
 
     <main>
-        <!-- Randomized elements for the links -->
         <p class="randomize">pastels.</p>
         <p class="randomize">gallery//below:</p>
         <a href="gallery.html" class="randomize">Gallery</a>
@@ -76,6 +79,7 @@
 
 </body>
 </html>
+
 
 
 
