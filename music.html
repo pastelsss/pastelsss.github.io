@@ -56,12 +56,21 @@
         .music-title {
             font-size: 1.5rem;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             color: white;
         }
 
+        .track {
+            margin-bottom: 40px;
+        }
+
+        .track-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
         audio {
-            margin-top: 20px;
             width: 100%;
             max-width: 500px;
         }
@@ -96,20 +105,29 @@
 <div class="music-content">
     <h1 class="music-title">e.m.i.s</h1>
 
-    <audio controls>
-        <source src="audio/untitledtrack1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <div class="track">
+        <div class="track-title">untitled track 1</div>
+        <audio controls>
+            <source src="audio/untitledtrack1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
-    <audio controls>
-        <source src="audio/forest%20song.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio>
+    <div class="track">
+        <div class="track-title">forest song</div>
+        <audio controls>
+            <source src="audio/forest%20song.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
-    <audio controls>
-        <source src="audio/so%20happy%20you%27re%20here2.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio>
+    <div class="track">
+        <div class="track-title">so happy you're here</div>
+        <audio controls>
+            <source src="audio/so%20happy%20you%27re%20here2.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
     <div class="soundcloud-link">
         Or listen on <a href="https://on.soundcloud.com/ifGczyV0h2dNHMoCY9" target="_blank">SoundCloud</a>.
@@ -118,3 +136,4 @@
 
 </body>
 </html>
+
