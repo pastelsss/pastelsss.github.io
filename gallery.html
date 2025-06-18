@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,7 +138,6 @@
   </nav>
 </header>
 
-
 <div class="gallery">
     <!-- 2024 Gallery -->
     <h2 onclick="openGallery('2024')">2024 Gallery</h2>
@@ -145,8 +145,8 @@
         <img src="photos/casinolight.jpg" alt="Casino Light">
         <img src="photos/casinopeople.jpg" alt="Casino People">
         <img src="photos/i.jpg" alt="Photo i">
-        <img src="photos/poollight.jpg" alt="Photo pool light">
-        <img src="photos/jellyfish.jpg" alt="jellyfish">
+        <img src="photos/poollight.jpg" alt="Pool Light">
+        <img src="photos/jellyfish.jpg" alt="Jellyfish">
     </div>
 
     <!-- Gallery XA -->
@@ -164,10 +164,19 @@
     <div class="preview-images">
         <img src="photos/water3.jpg" alt="Water Composite">
         <img src="photos/door.jpg" alt="Door Composite">
-        <img src="photos/wavesplit.jpg" alt="Wave Split Composite">
-        <img src="photos/fadecomp.jpg" alt="bali pool">
+        <img src="photos/wavesplit.jpg" alt="Wave Split">
+        <img src="photos/fadecomp.jpg" alt="Bali Pool">
     </div>
-</div>
+
+    <!-- Asia -->
+    <h2 onclick="openGallery('asia')">Asia</h2>
+    <div class="preview-images">
+        <img src="photos/boat.jpg" alt="Boat">
+        <img src="photos/tarplight.jpg" alt="Tarp Light">
+        <img src="photos/console.jpg" alt="Console">
+        <img src="photos/balidog.jpg" alt="Bali Dog">
+        <img src="photos/bikeviet.jpg" alt="Bike Vietnam">
+    </div>
 
 <!-- Slideshow Modal -->
 <div class="slideshow" id="slideshow">
@@ -179,34 +188,34 @@
 
 <script>
   const galleryData = {
-    '2024': [
-        'photos/casinolight.jpg',
-        'photos/casinopeople.jpg',
-        'photos/i.jpg',
-        'photos/poollight.jpg',
-        'photos/jellyfish.jpg',
-    ],
-    'xa': [
-        'photos/ngv.jpg',
-        'photos/river.jpg',
-        'photos/cityman.jpg',
-        'photos/train.jpg',
-        'photos/flyingfish.jpg',
-    ],
-    'composites': [
-        'photos/water3.jpg',
-        'photos/door.jpg',
-        'photos/wavesplit.jpg',
-        'photos/fadecomp.jpg',
-    ],
-    'asia': [
-        'photos/boat.jpg',
-        'photos/tarplight.jpg',
-        'photos/console.jpg',
-        'photos/balidog.jpg',
-        'photos/bikeviet.jpg',
-    ]
-};
+      '2024': [
+          'photos/casinolight.jpg',
+          'photos/casinopeople.jpg',
+          'photos/i.jpg',
+          'photos/poollight.jpg',
+          'photos/jellyfish.jpg',
+      ],
+      'xa': [
+          'photos/ngv.jpg',
+          'photos/river.jpg',
+          'photos/cityman.jpg',
+          'photos/train.jpg',
+          'photos/flyingfish.jpg',
+      ],
+      'composites': [
+          'photos/water3.jpg',
+          'photos/door.jpg',
+          'photos/wavesplit.jpg',
+          'photos/fadecomp.jpg',
+      ],
+      'asia': [
+          'photos/boat.jpg',
+          'photos/tarplight.jpg',
+          'photos/console.jpg',
+          'photos/balidog.jpg',
+          'photos/bikeviet.jpg',
+      ]
+  };
 
   let currentGallery = '2024';
   let currentImageIndex = 0;
