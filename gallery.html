@@ -54,6 +54,9 @@
           text-align: center;
           margin-bottom: 0;
           cursor: pointer;
+          opacity: 0;
+          transform: translateY(20px);
+          animation: slideUp 0.8s ease forwards;
       }
 
       .preview-images {
@@ -70,6 +73,10 @@
           cursor: pointer;
           border-radius: 8px;
           box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          opacity: 0;
+          transform: translateY(20px);
+          animation: slideUp 0.8s ease forwards;
+          animation-delay: 0.2s;
       }
 
       .slideshow {
@@ -94,6 +101,8 @@
           height: auto;
           object-fit: contain;
           border-radius: 8px;
+          opacity: 1;
+          transition: opacity 0.5s ease;
       }
 
       .slideshow .close-btn,
@@ -125,6 +134,17 @@
       .slideshow .arrow-btn.right {
           right: 20px;
       }
+
+      @keyframes slideUp {
+          from {
+              opacity: 0;
+              transform: translateY(20px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
   </style>
 </head>
 <body>
@@ -139,7 +159,6 @@
 </header>
 
 <div class="gallery">
-    <!-- 2024 Gallery -->
     <h2 onclick="openGallery('2024')">2024 Gallery</h2>
     <div class="preview-images">
         <img src="photos/casinolight.jpg" alt="Casino Light">
@@ -149,7 +168,6 @@
         <img src="photos/jellyfish.jpg" alt="Jellyfish">
     </div>
 
-    <!-- Gallery XA -->
     <h2 onclick="openGallery('xa')">Gallery XA</h2>
     <div class="preview-images">
         <img src="photos/ngv.jpg" alt="NGV">
@@ -159,7 +177,6 @@
         <img src="photos/flyingfish.jpg" alt="Flying Fish">
     </div>
 
-    <!-- Composites -->
     <h2 onclick="openGallery('composites')">Composites</h2>
     <div class="preview-images">
         <img src="photos/water3.jpg" alt="Water Composite">
@@ -168,7 +185,6 @@
         <img src="photos/fadecomp.jpg" alt="Bali Pool">
     </div>
 
-    <!-- Asia -->
     <h2 onclick="openGallery('asia')">Asia</h2>
     <div class="preview-images">
         <img src="photos/boat.jpg" alt="Boat">
@@ -177,8 +193,8 @@
         <img src="photos/balidog.jpg" alt="Bali Dog">
         <img src="photos/bikeviet.jpg" alt="Bike Vietnam">
     </div>
+</div>
 
-<!-- Slideshow Modal -->
 <div class="slideshow" id="slideshow">
     <button class="close-btn" onclick="closeSlideshow()">X</button>
     <button class="arrow-btn left" onclick="changeImage(-1)">&#10094;</button>
@@ -223,8 +239,7 @@
   function openGallery(gallery) {
       currentGallery = gallery;
       currentImageIndex = 0;
-      const image = galleryData[gallery][currentImageIndex];
-      document.getElementById('slideshow-image').src = image;
+      changeImage(0);
       document.getElementById('slideshow').style.display = 'flex';
   }
 
@@ -237,11 +252,17 @@
       const totalImages = galleryData[currentGallery].length;
       if (currentImageIndex < 0) currentImageIndex = totalImages - 1;
       if (currentImageIndex >= totalImages) currentImageIndex = 0;
-      const image = galleryData[currentGallery][currentImageIndex];
-      document.getElementById('slideshow-image').src = image;
+
+      const imgElement = document.getElementById('slideshow-image');
+      imgElement.style.opacity = 0;
+      setTimeout(() => {
+          imgElement.src = galleryData[currentGallery][currentImageIndex];
+          imgElement.style.opacity = 1;
+      }, 200);
   }
 </script>
 
 </body>
 </html>
+
 
