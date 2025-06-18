@@ -101,8 +101,14 @@
           height: auto;
           object-fit: contain;
           border-radius: 8px;
-          opacity: 1;
-          transition: opacity 0.25s ease;
+      }
+
+      .slideshow img.slide-left {
+          animation: slideInFromLeft 0.4s ease;
+      }
+
+      .slideshow img.slide-right {
+          animation: slideInFromRight 0.4s ease;
       }
 
       .slideshow .close-btn,
@@ -143,6 +149,28 @@
           to {
               opacity: 1;
               transform: translateY(0);
+          }
+      }
+
+      @keyframes slideInFromRight {
+          from {
+              opacity: 0;
+              transform: translateX(100px);
+          }
+          to {
+              opacity: 1;
+              transform: translateX(0);
+          }
+      }
+
+      @keyframes slideInFromLeft {
+          from {
+              opacity: 0;
+              transform: translateX(-100px);
+          }
+          to {
+              opacity: 1;
+              transform: translateX(0);
           }
       }
   </style>
@@ -239,7 +267,7 @@
   function openGallery(gallery) {
       currentGallery = gallery;
       currentImageIndex = 0;
-      changeImage(0);
+      updateImage('right');
       document.getElementById('slideshow').style.display = 'flex';
   }
 
@@ -248,17 +276,22 @@
   }
 
   function changeImage(direction) {
-      currentImageIndex += direction;
       const totalImages = galleryData[currentGallery].length;
+      currentImageIndex += direction;
       if (currentImageIndex < 0) currentImageIndex = totalImages - 1;
       if (currentImageIndex >= totalImages) currentImageIndex = 0;
 
+      updateImage(direction > 0 ? 'right' : 'left');
+  }
+
+  function updateImage(direction) {
       const imgElement = document.getElementById('slideshow-image');
-      imgElement.style.opacity = 0;
-      setTimeout(() => {
-          imgElement.src = galleryData[currentGallery][currentImageIndex];
-          imgElement.style.opacity = 1;
-      }, 200);
+      const newSrc = galleryData[currentGallery][currentImageIndex];
+
+      imgElement.classList.remove('slide-left', 'slide-right');
+      void imgElement.offsetWidth; // force reflow to restart animation
+      imgElement.src = newSrc;
+      imgElement.classList.add(direction === 'left' ? 'slide-left' : 'slide-right');
   }
 </script>
 
