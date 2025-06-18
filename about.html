@@ -16,9 +16,8 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       color: white;
-      display: flex;
-      flex-direction: column;
       animation: fadeIn 2s ease;
+      position: relative;
     }
 
     header {
@@ -28,6 +27,8 @@
       padding: 20px 0;
       background-color: rgba(255, 255, 255, 0.8);
       border-bottom: 2px solid #ddd;
+      z-index: 2;
+      position: relative;
     }
 
     nav {
@@ -48,15 +49,11 @@
       text-decoration-color: lightblue;
     }
 
-    .about-content {
-      padding: 40px 20px;
-      width: 100%;
-      box-sizing: border-box;
-      margin-top: auto;
-      margin-bottom: 60px;
-    }
-
     .contact-info {
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      transform: translateX(-20%);
       font-size: 1.2rem;
       font-weight: bold;
       text-align: left;
@@ -65,7 +62,6 @@
       animation-delay: 0.5s;
       color: white;
       max-width: 600px;
-      margin-left: 40px;
     }
 
     .soundcloud-link a {
@@ -86,11 +82,11 @@
     @keyframes slideFadeIn {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translate(-50%, 20px);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(-20%);
       }
     }
 
@@ -99,7 +95,6 @@
         background-size: contain;
       }
     }
-
   </style>
 </head>
 <body>
@@ -113,18 +108,17 @@
     </nav>
   </header>
 
-  <div class="about-content">
-    <div class="contact-info">
-      <p>Email: kylecamargo22@gmail.com</p>
-      <p>Instagram: uchoakyle</p>
-      <div class="soundcloud-link">
-        <a href="https://on.soundcloud.com/ifGczyV0h2dNHMoCY9" target="_blank">SoundCloud</a>
-      </div>
+  <div class="contact-info">
+    <p>Email: kylecamargo22@gmail.com</p>
+    <p>Instagram: uchoakyle</p>
+    <div class="soundcloud-link">
+      <a href="https://on.soundcloud.com/ifGczyV0h2dNHMoCY9" target="_blank">SoundCloud</a>
     </div>
   </div>
 
 </body>
 </html>
+
 
 
 
