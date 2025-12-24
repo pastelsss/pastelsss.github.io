@@ -182,7 +182,6 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
-    /* small screens */
     @media (max-width: 480px) {
       nav a { font-size: 1.05rem; }
       .preview-images img { width: 96px; }
@@ -202,46 +201,56 @@
 </header>
 
 <div class="gallery">
+
   <h2 onclick="openGallery('2024')">2024 Gallery</h2>
   <div class="preview-images">
-    <img src="photos/casinolight.jpg" alt="Casino Light">
-    <img src="photos/casinopeople.jpg" alt="Casino People">
-    <img src="photos/i.jpg" alt="Photo i">
-    <img src="photos/jellyfish.jpg" alt="Jellyfish">
+    <img src="photos/casinolight.jpg">
+    <img src="photos/casinopeople.jpg">
+    <img src="photos/i.jpg">
+    <img src="photos/jellyfish.jpg">
   </div>
 
   <h2 onclick="openGallery('xa')">Gallery XA</h2>
   <div class="preview-images">
-    <img src="photos/ngv.jpg" alt="NGV">
-    <img src="photos/river.jpg" alt="River">
-    <img src="photos/cityman.jpg" alt="City Man">
-    <img src="photos/flyingfish.jpg" alt="Flying Fish">
+    <img src="photos/ngv.jpg">
+    <img src="photos/river.jpg">
+    <img src="photos/cityman.jpg">
+    <img src="photos/flyingfish.jpg">
   </div>
 
   <h2 onclick="openGallery('asia')">Asia</h2>
   <div class="preview-images">
-    <img src="photos/boat.jpg" alt="Boat">
-    <img src="photos/game.jpg" alt="Game">
-    <img src="photos/tarplight.jpg" alt="Tarp Light">
-    <img src="photos/console.jpg" alt="Console">
-    <img src="photos/balidog.jpg" alt="Bali Dog">
-    <img src="photos/bikeviet.jpg" alt="Bike Vietnam">
+    <img src="photos/boat.jpg">
+    <img src="photos/game.jpg">
+    <img src="photos/tarplight.jpg">
+    <img src="photos/console.jpg">
+    <img src="photos/balidog.jpg">
+    <img src="photos/bikeviet.jpg">
+  </div>
+
+  <h2 onclick="openGallery('viet25')">VIET25</h2>
+  <div class="preview-images">
+    <img src="photos/viet0.jpg">
+    <img src="photos/viet1.jpg">
+    <img src="photos/viet2.jpg">
+    <img src="photos/viet3.jpg">
   </div>
 
   <h2 onclick="openGallery('composites')">Composites</h2>
   <div class="preview-images">
-    <img src="photos/water3.jpg" alt="Water Composite">
-    <img src="photos/door.jpg" alt="Door Composite">
-    <img src="photos/wavesplit.jpg" alt="Wave Split">
-    <img src="photos/fadecomp.jpg" alt="Bali Pool">
+    <img src="photos/water3.jpg">
+    <img src="photos/door.jpg">
+    <img src="photos/wavesplit.jpg">
+    <img src="photos/fadecomp.jpg">
   </div>
+
 </div>
 
 <div class="slideshow" id="slideshow">
-  <button class="close-btn" onclick="closeSlideshow()" aria-label="Close slideshow">×</button>
-  <button class="arrow-btn left" onclick="changeImage(-1)" aria-label="Previous image">&#10094;</button>
-  <img id="slideshow-image" src="" alt="Slideshow Image">
-  <button class="arrow-btn right" onclick="changeImage(1)" aria-label="Next image">&#10095;</button>
+  <button class="close-btn" onclick="closeSlideshow()">×</button>
+  <button class="arrow-btn left" onclick="changeImage(-1)">&#10094;</button>
+  <img id="slideshow-image" src="">
+  <button class="arrow-btn right" onclick="changeImage(1)">&#10095;</button>
 </div>
 
 <script>
@@ -258,12 +267,6 @@
       'photos/cityman.jpg',
       'photos/flyingfish.jpg'
     ],
-    'composites': [
-      'photos/water3.jpg',
-      'photos/door.jpg',
-      'photos/wavesplit.jpg',
-      'photos/fadecomp.jpg'
-    ],
     'asia': [
       'photos/boat.jpg',
       'photos/game.jpg',
@@ -271,6 +274,18 @@
       'photos/console.jpg',
       'photos/balidog.jpg',
       'photos/bikeviet.jpg'
+    ],
+    'viet25': [
+      'photos/viet0.jpg',
+      'photos/viet1.jpg',
+      'photos/viet2.jpg',
+      'photos/viet3.jpg'
+    ],
+    'composites': [
+      'photos/water3.jpg',
+      'photos/door.jpg',
+      'photos/wavesplit.jpg',
+      'photos/fadecomp.jpg'
     ]
   };
 
@@ -298,24 +313,18 @@
 
   function updateImage(direction) {
     const imgElement = document.getElementById('slideshow-image');
-    const newSrc = galleryData[currentGallery][currentImageIndex];
-
     imgElement.classList.remove('slide-left', 'slide-right');
-    void imgElement.offsetWidth; // force reflow
-    imgElement.src = newSrc;
+    void imgElement.offsetWidth;
+    imgElement.src = galleryData[currentGallery][currentImageIndex];
     imgElement.classList.add(direction === 'left' ? 'slide-left' : 'slide-right');
   }
 
-  // optional: close on background click (but not when clicking the image/buttons)
-  document.getElementById('slideshow').addEventListener('click', (e) => {
+  document.getElementById('slideshow').addEventListener('click', e => {
     if (e.target.id === 'slideshow') closeSlideshow();
   });
 
-  // optional: keyboard controls
-  document.addEventListener('keydown', (e) => {
-    const isOpen = document.getElementById('slideshow').style.display === 'flex';
-    if (!isOpen) return;
-
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('slideshow').style.display !== 'flex') return;
     if (e.key === 'Escape') closeSlideshow();
     if (e.key === 'ArrowLeft') changeImage(-1);
     if (e.key === 'ArrowRight') changeImage(1);
@@ -324,6 +333,5 @@
 
 </body>
 </html>
-
 
 
