@@ -52,6 +52,25 @@
       width: 100%;
       max-width: 1100px;
       box-sizing: border-box;
+      position: relative; /* for background phrase */
+      z-index: 1;
+    }
+
+    /* 🔥 Hidden Background Phrase */
+    .gallery::before {
+      content: "I'm most active when I'm focused on the outside world";
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.05); /* subtle */
+      white-space: nowrap;
+      letter-spacing: 1px;
+      z-index: -1;
+      pointer-events: none;
+      user-select: none;
     }
 
     .gallery h2 {
@@ -212,39 +231,11 @@
 
 <script>
   const galleryData = {
-    viet25: [
-      'photos/viet0.jpg',
-      'photos/viet1.jpg',
-      'photos/viet2.jpg',
-      'photos/viet3.jpg'
-    ],
-    composites: [
-      'photos/water3.jpg',
-      'photos/door.jpg',
-      'photos/wavesplit.jpg',
-      'photos/fadecomp.jpg'
-    ],
-    '2024': [
-      'photos/casinolight.jpg',
-      'photos/ty.jpg',
-      'photos/casinopeople.jpg',
-      'photos/i.jpg',
-      'photos/jellyfish.jpg'
-    ],
-    xa: [
-      'photos/ngv.jpg',
-      'photos/river.jpg',
-      'photos/cityman.jpg',
-      'photos/flyingfish.jpg'
-    ],
-    asia: [
-      'photos/boat.jpg',
-      'photos/game.jpg',
-      'photos/tarplight.jpg',
-      'photos/console.jpg',
-      'photos/balidog.jpg',
-      'photos/bikeviet.jpg'
-    ]
+    viet25: ['photos/viet0.jpg','photos/viet1.jpg','photos/viet2.jpg','photos/viet3.jpg'],
+    composites: ['photos/water3.jpg','photos/door.jpg','photos/wavesplit.jpg','photos/fadecomp.jpg'],
+    '2024': ['photos/casinolight.jpg','photos/ty.jpg','photos/casinopeople.jpg','photos/i.jpg','photos/jellyfish.jpg'],
+    xa: ['photos/ngv.jpg','photos/river.jpg','photos/cityman.jpg','photos/flyingfish.jpg'],
+    asia: ['photos/boat.jpg','photos/game.jpg','photos/tarplight.jpg','photos/console.jpg','photos/balidog.jpg','photos/bikeviet.jpg']
   };
 
   let currentGallery = 'viet25';
@@ -268,11 +259,11 @@
   }
 
   function updateImage() {
-    document.getElementById('slideshow-image').src =
-      galleryData[currentGallery][currentImageIndex];
+    document.getElementById('slideshow-image').src = galleryData[currentGallery][currentImageIndex];
   }
 </script>
 
 </body>
 </html>
+
 
