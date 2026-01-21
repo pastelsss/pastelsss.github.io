@@ -9,12 +9,18 @@
             font-family: Source Code Pro, monospace;
             margin: 0;
             padding: 0;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* FIRST SECTION */
+        .music-section {
+            min-height: 100vh;
             background-image: url('photos/s.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -89,10 +95,22 @@
             text-decoration: underline;
             text-decoration-color: lightblue;
         }
+
+        /* SECOND SECTION */
+        .scroll-section {
+            min-height: 100vh;
+            background-image: url('photos/s1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
     </style>
 </head>
 <body>
 
+<div class="music-section">
 <header>
     <nav>
         <a href="index.html">Home</a>
@@ -105,7 +123,7 @@
 <div class="music-content">
     <h1 class="music-title"></h1>
 
-    <!-- NEW FIRST TRACK -->
+    <!-- TRACK 1 -->
     <div class="track">
         <div class="track-title">i\Is now a good time to rest?</div>
         <audio controls>
@@ -114,6 +132,7 @@
         </audio>
     </div>
 
+    <!-- TRACK 2 -->
     <div class="track">
         <div class="track-title">e.m.i.s</div>
         <audio controls>
@@ -122,28 +141,17 @@
         </audio>
     </div>
 
-    <div class="track">
-        <div class="track-title">forest song</div>
-        <audio controls>
-            <source src="audio/forest_song.wav" type="audio/wav">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
-
-    <div class="track">
-        <div class="track-title">so happy you're here</div>
-        <audio controls>
-            <source src="audio/so_happy_youre_here2.wav" type="audio/wav">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
-
     <div class="soundcloud-link">
         Or listen on <a href="https://on.soundcloud.com/ifGczyV0h2dNHMoCY9" target="_blank">SoundCloud</a>.
     </div>
 </div>
+</div>
+
+<!-- SECOND BACKGROUND SECTION -->
+<div class="scroll-section"></div>
 
 </body>
 </html>
+
 
 
