@@ -49,6 +49,7 @@
       text-decoration-color: lightblue;
     }
 
+    /* KEY FIX IS HERE */
     .contact-info {
       position: absolute;
       top: 520px;
@@ -57,24 +58,15 @@
       font-size: 1.2rem;
       font-weight: bold;
       text-align: left;
+
+      display: flex;
+      flex-direction: column;
+      gap: 18px;            /* 👈 controls ALL spacing evenly */
+
       opacity: 0;
       animation: slideFadeIn 1.2s forwards;
       animation-delay: 0.5s;
       max-width: 600px;
-    }
-
-    .email {
-      margin-bottom: 8px;
-    }
-
-    .ig-line {
-      color: white;
-      margin-top: 0;
-      margin-bottom: 26px; /* controls spacing before links */
-    }
-
-    .link-block {
-      margin-top: 16px; /* pushes Pinterest + SoundCloud down */
     }
 
     .link-block a {
@@ -122,8 +114,8 @@
   </header>
 
   <div class="contact-info">
-    <p class="email">kylecamargo22@gmail.com</p>
-    <p class="ig-line">ig uchoakyle</p>
+    <div>kylecamargo22@gmail.com</div>
+    <div>ig uchoakyle</div>
 
     <div class="link-block">
       <a href="https://pin.it/31Zhl4GSG" target="_blank">Pinterest</a>
@@ -136,7 +128,6 @@
 
 </body>
 </html>
-
 
 
 
