@@ -1,194 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Music</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Music</title>
+    <style>
+        body {
+            font-family: Source Code Pro, monospace;
+            margin: 0;
+            padding: 0;
+            color: white;
+            overflow-x: hidden;
+        }
 
-  <style>
-    body {
-      font-family: "Source Code Pro", monospace;
-      margin: 0;
-      padding: 0;
-      color: white;
-      overflow-x: hidden;
-      animation: fadeIn 2s ease;
-    }
+        /* FIRST SECTION */
+        .music-section {
+            min-height: 100vh;
+            background-image: url('photos/grass.jpg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    @media (min-width: 768px) {
-      body {
-        background-size: contain;
-      }
-    }
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-bottom: 2px solid #ddd;
+        }
 
-    /* FIRST SECTION */
-    .music-section {
-      min-height: 100vh;
-      background-image: url('photos/grass.jpg');
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
 
-    header {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding: 20px 0;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-bottom: 2px solid #ddd;
-      z-index: 2;
-    }
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-    nav {
-      display: flex;
-      gap: 20px;
-    }
+        nav a:hover {
+            text-decoration: underline;
+            text-decoration-color: lightblue;
+        }
 
-    nav a {
-      text-decoration: none;
-      color: black;
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
+        .music-content {
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            margin-top: 120px; /* *** MOVED DOWN *** */
+        }
 
-    nav a:hover {
-      text-decoration: underline;
-      text-decoration-color: lightblue;
-    }
+        .music-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: white;
+        }
 
-    .music-content {
-      padding: 20px;
-      text-align: center;
-      width: 100%;
-      margin-top: 120px;
-    }
+        .track {
+            margin-bottom: 40px;
+        }
 
-    /* 🔑 SAME ANIMATION SYSTEM */
-    .fade-item {
-      opacity: 0;
-      animation: slideFadeIn 1.2s forwards;
-    }
+        .track-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
 
-    .delay-1 { animation-delay: 0.4s; }
-    .delay-2 { animation-delay: 0.6s; }
-    .delay-3 { animation-delay: 0.8s; }
-    .delay-4 { animation-delay: 1s; }
-    .delay-5 { animation-delay: 1.2s; }
+        audio {
+            width: 100%;
+            max-width: 500px;
+        }
 
-    .music-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
+        .soundcloud-link {
+            margin-top: 30px;
+            font-size: 1rem;
+        }
 
-    .track {
-      margin-bottom: 40px;
-    }
+        .soundcloud-link a {
+            color: #90c8ff;
+            text-decoration: none;
+        }
 
-    .track-title {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
+        .soundcloud-link a:hover {
+            text-decoration: underline;
+            text-decoration-color: lightblue;
+        }
 
-    audio {
-      width: 100%;
-      max-width: 500px;
-    }
+        /* SECOND SECTION */
+        .scroll-section {
+            min-height: 100vh;
+            background-image: url('photos/s1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
 
-    .soundcloud-link {
-      margin-top: 50px;
-      font-size: 1rem;
-    }
-
-    .soundcloud-link a {
-      color: #90c8ff;
-      text-decoration: none;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    .soundcloud-link a:hover {
-      color: #ffffff;
-      text-shadow: 0 0 5px lightblue;
-      text-decoration: underline;
-      text-decoration-color: lightblue;
-    }
-
-    /* SECOND SECTION */
-    .scroll-section {
-      min-height: 100vh;
-      background-image: url('photos/s1.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* ✅ EXACT SAME KEYFRAMES AS INDEX + ABOUT */
-    @keyframes slideFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+    </style>
 </head>
-
 <body>
 
 <div class="music-section">
 
 <header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="music.html">Music</a>
-    <a href="about.html">About</a>
-  </nav>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="music.html">Music</a>
+        <a href="about.html">About</a>
+    </nav>
 </header>
 
 <div class="music-content">
+    <h1 class="music-title"></h1>
 
-  <!-- TRACK 1 -->
-  <div class="track fade-item delay-1">
-    <div class="track-title">i\Is now a good time to rest?</div>
-    <audio controls>
-      <source src="audio/is_now_a_good_time_to_rest_final.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
+    <!-- TRACK 1 -->
+    <div class="track">
+        <div class="track-title">i\Is now a good time to rest?</div>
+        <audio controls>
+            <source src="audio/is_now_a_good_time_to_rest_final.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
-  <!-- TRACK 2 -->
-  <div class="track fade-item delay-2">
-    <div class="track-title">apple2</div>
-    <audio controls>
-      <source src="audio/apple2.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
+    <!-- TRACK 2 -->
+    <div class="track">
+        <div class="track-title">apple2</div>
+        <audio controls>
+            <source src="audio/apple2." type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
-  <!-- SOUNDCLOUD -->
-  <div class="soundcloud-link fade-item delay-3">
-    Or listen on
-    <a href="https://on.soundcloud.com/ifGczyV0h2dNHMoCY9" target="_blank" rel="noopener noreferrer">
-      SoundCloud
-    </a>.
-  </div>
-
+    <div class="soundcloud-link">
+        Or listen on <a href="https://on.soundcloud.com/ifGczyV0h2dNHMoCY9" target="_blank">SoundCloud</a>.
+    </div>
 </div>
 </div>
 
