@@ -52,11 +52,11 @@
       width: 100%;
       max-width: 1100px;
       box-sizing: border-box;
-      position: relative; /* for background phrase */
+      position: relative;
       z-index: 1;
     }
 
-    /* 🔥 Hidden Background Phrase */
+    /* Hidden Background Phrase */
     .gallery::before {
       content: " 270126";
       position: absolute;
@@ -65,7 +65,7 @@
       transform: translate(-50%, -50%);
       font-size: 3rem;
       font-weight: 300;
-      color: rgba(0, 0, 0, 0.05); /* subtle */
+      color: rgba(0, 0, 0, 0.05);
       white-space: nowrap;
       letter-spacing: 1px;
       z-index: -1;
@@ -179,46 +179,47 @@
 
   <h2 onclick="openGallery('viet25')">VIET25</h2>
   <div class="preview-images">
-    <img src="photos/viet0.jpg">
-    <img src="photos/viet1.jpg">
-    <img src="photos/viet2.jpg">
-    <img src="photos/viet3.jpg">
+    <img src="photos/viet0.jpg" alt="viet0">
+    <img src="photos/viet1.jpg" alt="viet1">
+    <img src="photos/viet2.jpg" alt="viet2">
+    <img src="photos/viet3.jpg" alt="viet3">
   </div>
 
   <h2 onclick="openGallery('composites')">Composites</h2>
   <div class="preview-images">
-    <img src="photos/water3.jpg">
-    <img src="photos/door.jpg">
-    <img src="photos/wavesplit.jpg">
-    <img src="photos/fadecomp.jpg">
+    <img src="photos/water3.jpg" alt="water3">
+    <img src="photos/door.jpg" alt="door">
+    <img src="photos/wavesplit.jpg" alt="wavesplit">
+    <img src="photos/fadecomp.jpg" alt="fadecomp">
   </div>
 
   <h2 onclick="openGallery('2024')">24</h2>
   <div class="preview-images">
-    <img src="photos/casinolight.jpg">
-    <img src="photos/layinggrass.jpg">
-    <img src="photos/casinopeople.jpg">
-    <img src="photos/i.jpg">
-    <img src="photos/jellyfish.jpg">
+    <img src="photos/casinolight.jpg" alt="casinolight">
+    <img src="photos/layinggrass.jpg" alt="layinggrass">
+    <img src="photos/casinopeople.jpg" alt="casinopeople">
+    <img src="photos/i.jpg" alt="i">
+    <img src="photos/jellyfish.jpg" alt="jellyfish">
   </div>
 
   <h2 onclick="openGallery('xa')">Gallery XA</h2>
   <div class="preview-images">
-    <img src="photos/ngv.jpg">
-    <img src="photos/river.jpg">
-    <img src="photos/cityman.jpg">
-    <img src="photos/tyclimb.jpg">
-    <img src="photos/flyingfish.jpg">
+    <img src="photos/ngv.jpg" alt="ngv">
+    <img src="photos/river.jpg" alt="river">
+    <img src="photos/cityman.jpg" alt="cityman">
+    <img src="photos/tyclimb.jpg" alt="tyclimb">
+    <img src="photos/flyingfish.jpg" alt="flyingfish">
   </div>
 
-  <h2 onclick="openGallery('Present!')">Present!</h2>
+  <!-- Keep the DISPLAY name "Present!" but use a safe key "present" -->
+  <h2 onclick="openGallery('present')">Present!</h2>
   <div class="preview-images">
-    <img src="photos/boat.jpg">
-    <img src="photos/game.jpg">
-    <img src="photos/tarplight.jpg">
-    <img src="photos/console.jpg">
-    <img src="photos/balidog.jpg">
-    <img src="photos/bikeviet.jpg">
+    <img src="photos/boat.jpg" alt="boat">
+    <img src="photos/game.jpg" alt="game">
+    <img src="photos/tarplight.jpg" alt="tarplight">
+    <img src="photos/console.jpg" alt="console">
+    <img src="photos/balidog.jpg" alt="balidog">
+    <img src="photos/bikeviet.jpg" alt="bikeviet">
   </div>
 
 </div>
@@ -226,17 +227,46 @@
 <div class="slideshow" id="slideshow">
   <button class="close-btn" onclick="closeSlideshow()">×</button>
   <button class="arrow-btn left" onclick="changeImage(-1)">&#10094;</button>
-  <img id="slideshow-image" src="">
+  <img id="slideshow-image" src="" alt="slideshow">
   <button class="arrow-btn right" onclick="changeImage(1)">&#10095;</button>
 </div>
 
 <script>
   const galleryData = {
-    viet25: ['photos/viet0.jpg','photos/viet1.jpg','photos/viet2.jpg','photos/viet3.jpg'],
-    composites: ['photos/water3.jpg','photos/door.jpg','photos/wavesplit.jpg','photos/fadecomp.jpg'],
-    '2024': ['photos/casinolight.jpg','photos/layinggrass.jpg','photos/casinopeople.jpg','photos/i.jpg','photos/jellyfish.jpg'],
-    xa: ['photos/ngv.jpg','photos/river.jpg','photos/cityman.jpg', 'photos/tyclimb.jpg','photos/flyingfish.jpg'],
-    Present!: ['photos/boat.jpg','photos/game.jpg','photos/tarplight.jpg','photos/console.jpg','photos/balidog.jpg','photos/bikeviet.jpg']
+    viet25: [
+      'photos/viet0.jpg',
+      'photos/viet1.jpg',
+      'photos/viet2.jpg',
+      'photos/viet3.jpg'
+    ],
+    composites: [
+      'photos/water3.jpg',
+      'photos/door.jpg',
+      'photos/wavesplit.jpg',
+      'photos/fadecomp.jpg'
+    ],
+    '2024': [
+      'photos/casinolight.jpg',
+      'photos/layinggrass.jpg',
+      'photos/casinopeople.jpg',
+      'photos/i.jpg',
+      'photos/jellyfish.jpg'
+    ],
+    xa: [
+      'photos/ngv.jpg',
+      'photos/river.jpg',
+      'photos/cityman.jpg',
+      'photos/tyclimb.jpg',
+      'photos/flyingfish.jpg'
+    ],
+    present: [
+      'photos/boat.jpg',
+      'photos/game.jpg',
+      'photos/tarplight.jpg',
+      'photos/console.jpg',
+      'photos/balidog.jpg',
+      'photos/bikeviet.jpg'
+    ]
   };
 
   let currentGallery = 'viet25';
@@ -260,7 +290,8 @@
   }
 
   function updateImage() {
-    document.getElementById('slideshow-image').src = galleryData[currentGallery][currentImageIndex];
+    document.getElementById('slideshow-image').src =
+      galleryData[currentGallery][currentImageIndex];
   }
 </script>
 
