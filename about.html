@@ -17,7 +17,6 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       color: white;
-      animation: fadeIn 2s ease;
       position: relative;
     }
 
@@ -27,7 +26,7 @@
       }
     }
 
-    /* HEADER — NO ANIMATION */
+    /* HEADER — STATIC, NO ANIMATION */
     header {
       width: 100%;
       display: flex;
@@ -37,19 +36,11 @@
       border-bottom: 2px solid #ddd;
       z-index: 2;
       position: relative;
-
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
     }
 
     nav {
       display: flex;
       gap: 20px;
-
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
     }
 
     nav a {
@@ -69,19 +60,16 @@
     .text-block {
       position: absolute;
       left: 50%;
+      top: 550px;
       transform: translateX(-50%);
       opacity: 0;
       animation: slideFadeIn 1.2s forwards;
+      animation-delay: 0.5s;
       text-align: left;
       font-size: 1.2rem;
       font-weight: bold;
       max-width: 600px;
       z-index: 1;
-    }
-
-    .contact-info {
-      top: 550px;
-      animation-delay: 0.5s;
     }
 
     .line {
@@ -112,11 +100,7 @@
       text-decoration-color: lightblue;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
+    /* EXACT SAME KEYFRAMES AS INDEX */
     @keyframes slideFadeIn {
       from {
         opacity: 0;
@@ -141,7 +125,7 @@
   </nav>
 </header>
 
-<div class="text-block contact-info">
+<div class="text-block">
   <span class="line name">kyle uchoa</span>
   <span class="line dot">.</span>
   <span class="line pinterest">
