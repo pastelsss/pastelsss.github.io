@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About</title>
-
   <style>
     body {
       font-family: Source Code Pro, monospace;
@@ -50,11 +49,11 @@
       text-decoration-color: lightblue;
     }
 
-    /* MAIN TEXT BLOCK */
+    /* KEY FIX IS HERE */
     .contact-info {
       position: absolute;
-      top: 570px;          /* overall vertical position */
-      left: 55%;
+      top: 520px;
+      left: 50%;
       transform: translateX(-50%);
       font-size: 1.2rem;
       font-weight: bold;
@@ -62,17 +61,12 @@
 
       display: flex;
       flex-direction: column;
-      gap: 18px;           /* even spacing for everything */
+      gap: 18px;            /* 👈 controls ALL spacing evenly */
 
       opacity: 0;
       animation: slideFadeIn 1.2s forwards;
       animation-delay: 0.5s;
       max-width: 600px;
-    }
-
-    /* 🔑 ONLY moves the name */
-    .name {
-      margin-bottom: -8px; /* pulls “kyle uchoa” slightly UP */
     }
 
     .link-block a {
@@ -84,10 +78,6 @@
       text-decoration: underline;
       text-decoration-color: lightblue;
     }
-    .link-block {
-  margin-top: 20px; /* pushes links down */s
-    }
-
 
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -112,7 +102,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <header>
@@ -125,7 +114,8 @@
   </header>
 
   <div class="contact-info">
-    <div class="name">kyle uchoa</div>
+    <div>kyle uchoa</div>
+    <div> _ </div>
 
     <div class="link-block">
       <a href="https://pin.it/31Zhl4GSG" target="_blank">Pinterest</a>
@@ -138,7 +128,6 @@
 
 </body>
 </html>
-
 
 
 
