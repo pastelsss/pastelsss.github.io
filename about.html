@@ -20,6 +20,12 @@
       position: relative;
     }
 
+    @media (min-width: 768px) {
+      body {
+        background-size: contain;
+      }
+    }
+
     header {
       width: 100%;
       display: flex;
@@ -49,32 +55,51 @@
       text-decoration-color: lightblue;
     }
 
-    /* KEY FIX IS HERE */
-    .contact-info {
+    /* ✅ same animation style as index (.text-block) */
+    .text-block {
       position: absolute;
-      top: 550px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-align: left;
-
-      display: flex;
-      flex-direction: column;
-      gap: 20px;            /* 👈 controls ALL spacing evenly */
-
       opacity: 0;
       animation: slideFadeIn 1.2s forwards;
-      animation-delay: 0.5s;
+      text-align: left;
+      font-size: 1.2rem;
+      font-weight: bold;
       max-width: 600px;
+      z-index: 1;
     }
 
-    .link-block a {
+    /* Positioning of the whole block (like your old contact-info top value) */
+    .contact-info {
+      top: 550px;
+      animation-delay: 0.5s; /* matches your About timing */
+    }
+
+    /* Each line gets the SAME animation + stagger like index page */
+    .line {
+      display: block;
+      opacity: 0;
+      animation: slideFadeIn 1.2s forwards;
+    }
+
+    .line.name { animation-delay: 0.5s; }
+    .line.dot { animation-delay: 0.7s; }
+    .line.pinterest { animation-delay: 0.9s; }
+    .line.soundcloud { animation-delay: 1.1s; }
+
+    .line + .line {
+      margin-top: 20px; /* evenly spaced like your gap: 20px */
+    }
+
+    .line a {
       color: #90c8ff;
       text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
-    .link-block a:hover {
+    .line a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 5px lightblue;
       text-decoration: underline;
       text-decoration-color: lightblue;
     }
@@ -84,6 +109,7 @@
       to { opacity: 1; }
     }
 
+    /* ✅ EXACT same keyframes as index */
     @keyframes slideFadeIn {
       from {
         opacity: 0;
@@ -92,12 +118,6 @@
       to {
         opacity: 1;
         transform: translateX(-50%);
-      }
-    }
-
-    @media (min-width: 768px) {
-      body {
-        background-size: contain;
       }
     }
   </style>
@@ -113,21 +133,21 @@
     </nav>
   </header>
 
-  <div class="contact-info">
-    <div>kyle uchoa</div>
-    <div>    . </div>
-
-    <div class="link-block">
-      <a href="https://pin.it/31Zhl4GSG" target="_blank">Pinterest</a>
-    </div>
-
-    <div class="link-block">
-      <a href="https://on.soundcloud.com/ifGczyV0h2dNHMoCY9" target="_blank">SoundCloud</a>
-    </div>
+  <!-- Contact block uses the SAME animation system as index -->
+  <div class="text-block contact-info">
+    <span class="line name">kyle uchoa</span>
+    <span class="line dot">.</span>
+    <span class="line pinterest">
+      <a href="https://pin.it/31Zhl4GSG" target="_blank" rel="noopener noreferrer">Pinterest</a>
+    </span>
+    <span class="line soundcloud">
+      <a href="https://on.soundcloud.com/ifGczyV0h2dNHMoCY9" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+    </span>
   </div>
 
 </body>
 </html>
+
 
 
 
