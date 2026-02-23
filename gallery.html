@@ -157,6 +157,16 @@
 
 <div class="gallery">
 
+  <!-- INDO (NEW TOP SECTION) -->
+  <h2 onclick="openGallery('indo')">INDO</h2>
+  <div class="preview-images">
+    <img src="photos/bali261.jpg" onclick="openFromImage('indo',0)">
+    <img src="photos/bali262.jpg" onclick="openFromImage('indo',1)">
+    <img src="photos/bali263.jpg" onclick="openFromImage('indo',2)">
+    <img src="photos/bali264.jpg" onclick="openFromImage('indo',3)">
+    <img src="photos/bali265.jpg" onclick="openFromImage('indo',4)">
+  </div>
+
   <h2 onclick="openGallery('viet25')">VIET25</h2>
   <div class="preview-images">
     <img src="photos/viet0.jpg" onclick="openFromImage('viet25',0)">
@@ -191,31 +201,50 @@
     <img src="photos/flyingfish.jpg" onclick="openFromImage('xa',4)">
   </div>
 
-  <h2 onclick="openGallery('present')">Present!</h2>
-  <div class="preview-images">
-    <img src="photos/boat.jpg" onclick="openFromImage('present',0)">
-    <img src="photos/game.jpg" onclick="openFromImage('present',1)">
-    <img src="photos/tarplight.jpg" onclick="openFromImage('present',2)">
-    <img src="photos/balidog.jpg" onclick="openFromImage('present',3)">
-    <img src="photos/bikeviet.jpg" onclick="openFromImage('present',4)">
-  </div>
-
 </div>
 
 <div class="slideshow" id="slideshow">
   <button class="close-btn" onclick="closeSlideshow()">×</button>
   <button class="arrow-btn left" onclick="changeImage(-1)">&#10094;</button>
-  <img id="slideshow-image">
+  <img id="slideshow-image" alt="">
   <button class="arrow-btn right" onclick="changeImage(1)">&#10095;</button>
 </div>
 
 <script>
   const galleryData = {
-    viet25: ['photos/viet0.jpg','photos/viet1.jpg','photos/viet2.jpg','photos/viet3.jpg'],
-    composites: ['photos/water3.jpg','photos/door.jpg','photos/wavesplit.jpg','photos/fadecomp.jpg'],
-    '2024': ['photos/casinolight.jpg','photos/layinggrass.jpg','photos/casinopeople.jpg','photos/i.jpg','photos/jellyfish.jpg'],
-    xa: ['photos/ngv.jpg','photos/river.jpg','photos/cityman.jpg','photos/tyclimb.jpg','photos/flyingfish.jpg'],
-    present: ['photos/boat.jpg','photos/game.jpg','photos/tarplight.jpg','photos/balidog.jpg','photos/bikeviet.jpg']
+    indo: [
+      'photos/bali261.jpg',
+      'photos/bali262.jpg',
+      'photos/bali263.jpg',
+      'photos/bali264.jpg',
+      'photos/bali265.jpg'
+    ],
+    viet25: [
+      'photos/viet0.jpg',
+      'photos/viet1.jpg',
+      'photos/viet2.jpg',
+      'photos/viet3.jpg'
+    ],
+    composites: [
+      'photos/water3.jpg',
+      'photos/door.jpg',
+      'photos/wavesplit.jpg',
+      'photos/fadecomp.jpg'
+    ],
+    '2024': [
+      'photos/casinolight.jpg',
+      'photos/layinggrass.jpg',
+      'photos/casinopeople.jpg',
+      'photos/i.jpg',
+      'photos/jellyfish.jpg'
+    ],
+    xa: [
+      'photos/ngv.jpg',
+      'photos/river.jpg',
+      'photos/cityman.jpg',
+      'photos/tyclimb.jpg',
+      'photos/flyingfish.jpg'
+    ]
   };
 
   let currentGallery = '';
@@ -234,8 +263,8 @@
   }
 
   function showSlideshow() {
-    document.getElementById('slideshow-image').src =
-      galleryData[currentGallery][currentImageIndex];
+    const img = document.getElementById('slideshow-image');
+    img.src = galleryData[currentGallery][currentImageIndex];
     document.getElementById('slideshow').style.display = 'flex';
   }
 
